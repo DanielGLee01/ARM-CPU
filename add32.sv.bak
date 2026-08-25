@@ -1,0 +1,28 @@
+// 32 bit full adder
+module add32(a, b, cin, sum, cout);
+	input logic [31:0] a, b;
+	input logic cin;
+	
+	output logic [31:0] sum; 
+	output logic cout;
+	
+	add1 adder1 (.a(a[0]), .b(b[0]), .cin, .sum, .cout);
+
+endmodule
+
+module add32_testbench();
+	logic a, b, cin, sum, cout;
+	
+	add1 dut (.a, .b, .cin, .sum, .cout);
+	
+	initial begin
+		a = 0; b = 0; cin = 0; #10;
+		a = 0; b = 0; cin = 1; #10;
+		a = 0; b = 1; cin = 0; #10;
+		a = 0; b = 1; cin = 1; #10;
+		a = 1; b = 0; cin = 0; #10;
+		a = 1; b = 0; cin = 1; #10;
+		a = 1; b = 1; cin = 0; #10;
+		a = 1; b = 1; cin = 1; #10;
+	end
+endmodule

@@ -1,0 +1,22 @@
+Info: Start Nativelink Simulation process
+
+========= EDA Simulation Settings =====================
+
+Sim Mode              :  Gate
+Family                :  cyclonev
+Quartus root          :  c:/altera_standard/25.1std/quartus/bin64/
+Quartus sim root      :  c:/altera_standard/25.1std/quartus/eda/sim_lib
+Simulation Tool       :  questa altera fpga
+Simulation Language   :  systemverilog
+Simulation Mode       :  GUI
+Sim Output File       :  De0_SoC.svo
+Sim SDF file          :  De0_SoC__verilog.sdo
+Sim dir               :  simulation\questa
+
+=======================================================
+
+Info: Starting NativeLink simulation with Questa Altera FPGA software
+Sourced NativeLink script c:/altera_standard/25.1std/quartus/common/tcl/internal/nativelink/modelsim.tcl
+Warning: File De0_SoC_run_msim_gate_systemverilog.do already exists - backing up current file as De0_SoC_run_msim_gate_systemverilog.do.bak11
+Info: Spawning Questa Altera FPGA Simulation software 
+Info: NativeLink simulation flow was successful

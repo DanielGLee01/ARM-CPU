@@ -1,0 +1,1 @@
+C:/altera/25.1std/questa_fse/win64/VisualizerRls/bin/viscom.exe -nolock -quiet -jmem_size 934320 work.add32_testbench -quiet -auto_acc_if_foreign -work work +acc -allow_unnamed -o _opt1 -id 2-d8bbc1c8598f-6a8a9c81-284-4b5c +__betafsm
