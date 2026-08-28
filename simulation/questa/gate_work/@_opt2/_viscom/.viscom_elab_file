@@ -1,1 +1,1 @@
-C:/altera/25.1std/questa_fse/win64/VisualizerRls/bin/viscom.exe -nolock -quiet -jmem_size 934320 work.alu_testbench -quiet -auto_acc_if_foreign -work work +acc -allow_unnamed -o _opt2 -id 2-d8bbc1c8598f-6a8bebd4-1fb-57dc +__betafsm
+C:/altera/25.1std/questa_fse/win64/VisualizerRls/bin/viscom.exe -nolock -quiet -jmem_size 934320 work.register_file_testbench -quiet -auto_acc_if_foreign -work work +acc -allow_unnamed -o _opt2 -id 2-d8bbc1c8598f-6a913a98-2a2-37d0 +__betafsm

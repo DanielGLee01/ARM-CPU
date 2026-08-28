@@ -1,19 +1,19 @@
 // 32 bit full adder
-module add32(a, b, cin, sum, cout);
-	input logic [31:0] a, b;
+module add32 import CPU_parameters::*; (a, b, cin, sum, cout);
+	input logic [DATA_WIDTH-1:0] a, b;
 	input logic cin;
 	
-	output logic [31:0] sum;
+	output logic [DATA_WIDTH-1:0] sum;
 	output logic cout;
 	
-	logic [32:0] carrywire;
+	logic [DATA_WIDTH:0] carrywire;
 	
 	assign carrywire[0] = cin;
 	
 	genvar i;
 	
 	generate
-		for (i = 0; i < 32; i++) begin : adders
+		for (i = 0; i < DATA_WIDTH; i++) begin : adders
 			add1 adder (.a(a[i]), .b(b[i]), .cin(carrywire[i]), .sum(sum[i]), .cout(carrywire[i+1]));
 		end
 	endgenerate
@@ -58,7 +58,9 @@ module add32(a, b, cin, sum, cout);
 endmodule
 
 module add32_testbench();
-	logic [31:0] a, b, sum;
+	import CPU_parameters::*;
+	
+	logic [DATA_WIDTH-1:0] a, b, sum;
 	logic cin, cout;
 	
 	add32 dut (.a, .b, .cin, .sum, .cout);

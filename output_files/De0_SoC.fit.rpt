@@ -1,5 +1,5 @@
 Fitter report for De0_SoC
-Sat Aug 22 21:32:54 2026
+Fri Aug 28 00:20:16 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Standard Edition
 
 
@@ -58,7 +58,7 @@ on the Quartus Prime software download page.
 +---------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                        ;
 +---------------------------------+-----------------------------------------------------+
-; Fitter Status                   ; Successful - Sat Aug 22 21:32:54 2026               ;
+; Fitter Status                   ; Successful - Fri Aug 28 00:20:16 2026               ;
 ; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Standard Edition ;
 ; Revision Name                   ; De0_SoC                                             ;
 ; Top-level Entity Name           ; De0_SoC                                             ;
@@ -1220,7 +1220,7 @@ Info (332154): The derive_clock_uncertainty command did not apply clock uncertai
 Info (332130): Timing requirements not specified -- quality metrics such as performance may be sacrificed to reduce compilation time.
 Info (170189): Fitter placement preparation operations beginning
 Info (14951): The Fitter is using Advanced Physical Optimization.
-Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:14
+Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:15
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
 Info (170192): Fitter placement operations ending: elapsed time is 00:00:00
@@ -1231,7 +1231,7 @@ Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were
     Info (170201): Optimizations that may affect the design's routability were skipped
     Info (170200): Optimizations that may affect the design's timing were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:01
-Info (11888): Total time spent on timing analysis during the Fitter is 0.35 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.34 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
@@ -1240,9 +1240,9 @@ Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:03
 Info (144001): Generated suppressed messages file C:/Users/danie/Downloads/ARM CPU/output_files/De0_SoC.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 5 warnings
     Info: Peak virtual memory: 8174 megabytes
-    Info: Processing ended: Sat Aug 22 21:32:55 2026
-    Info: Elapsed time: 00:00:45
-    Info: Total CPU time (on all processors): 00:03:47
+    Info: Processing ended: Fri Aug 28 00:20:17 2026
+    Info: Elapsed time: 00:00:48
+    Info: Total CPU time (on all processors): 00:04:04
 
 
 +----------------------------+

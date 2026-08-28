@@ -1,11 +1,11 @@
-module alu(a, b, operation, result, carry_flag, zero_flag, negative_flag, overflow_flag);
-	input logic [31:0] a, b;
+module alu import CPU_parameters::*; (a, b, operation, result, carry_flag, zero_flag, negative_flag, overflow_flag);
+	input logic [DATA_WIDTH-1:0] a, b;
 	input logic [2:0] operation;
-	output logic [31:0] result;
+	output logic [DATA_WIDTH-1:0] result;
 	output logic carry_flag, zero_flag, negative_flag, overflow_flag;
 	
 	logic cin, cout;
-	logic [31:0] b_xored, arithmetic_result;
+	logic [DATA_WIDTH-1:0] b_xored, arithmetic_result;
 	logic add_or_sub_sig;
 	
 	always_comb begin
@@ -60,9 +60,11 @@ module alu(a, b, operation, result, carry_flag, zero_flag, negative_flag, overfl
 endmodule
 
 module alu_testbench();
-	logic [31:0] a, b;
+	import CPU_parameters::*;
+	
+	logic [DATA_WIDTH-1:0] a, b;
 	logic [2:0] operation;
-	logic [31:0] result;
+	logic [DATA_WIDTH-1:0] result;
 	logic carry_flag, zero_flag, negative_flag, overflow_flag;
 	
 	alu dut (.a, .b, .operation, .result, .carry_flag, .zero_flag, .negative_flag, .overflow_flag);
