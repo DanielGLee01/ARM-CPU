@@ -1,0 +1,16 @@
+module program_counter import CPU_Parameters::*; (clk, reset, PC_value);
+	input logic clk, reset;
+	output logic [11:2] PC_Value;
+	
+	logic [10:0] curr_address;
+	
+	always_ff @(posedge clk) begin
+		if (reset) begin
+			PC_Value <= 0;
+		end
+		else begin
+			PC_Value <= PC_Value + 4;
+		end
+	end
+	
+endmodule

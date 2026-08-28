@@ -1,6 +1,4 @@
 module register_file import CPU_parameters::*; (clk, reset, read_register_A, read_register_B, read_data_A, read_data_B, write_addr, write_data, write_en);
-	parameter REG_COUNT = 16;
-	
 	input logic clk, reset;
 	input logic [3:0] read_register_A, read_register_B; 
 	input logic [3:0] write_addr;
@@ -24,6 +22,7 @@ module register_file import CPU_parameters::*; (clk, reset, read_register_A, rea
 	end
 	
 	// continuously check for data in register and assign read output
+	// TODO: write this as mux and decoder for extra practice
 	assign read_data_A = my_register[read_register_A];
 	assign read_data_B = my_register[read_register_B];
 endmodule
