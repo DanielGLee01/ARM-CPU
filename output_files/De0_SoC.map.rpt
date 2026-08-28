@@ -1,5 +1,5 @@
 Analysis & Synthesis report for De0_SoC
-Fri Aug 28 00:19:28 2026
+Fri Aug 28 00:48:17 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Standard Edition
 
 
@@ -43,7 +43,7 @@ on the Quartus Prime software download page.
 +---------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                          ;
 +---------------------------------+-----------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Fri Aug 28 00:19:28 2026               ;
+; Analysis & Synthesis Status     ; Successful - Fri Aug 28 00:48:17 2026               ;
 ; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Standard Edition ;
 ; Revision Name                   ; De0_SoC                                             ;
 ; Top-level Entity Name           ; De0_SoC                                             ;
@@ -258,7 +258,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Standard Edition
-    Info: Processing started: Fri Aug 28 00:19:22 2026
+    Info: Processing started: Fri Aug 28 00:48:12 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ARMCPU -c De0_SoC
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -310,8 +310,8 @@ Info (21057): Implemented 24 device resources after synthesis - the final resour
     Info (21059): Implemented 10 output pins
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 24 warnings
     Info: Peak virtual memory: 4823 megabytes
-    Info: Processing ended: Fri Aug 28 00:19:28 2026
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:13
+    Info: Processing ended: Fri Aug 28 00:48:17 2026
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:14
 
 
