@@ -23,6 +23,12 @@ R0
 R1
 R0
 R1
+R0
+R1
+R0
+R1
+R0
+R1
 Z2 !s12c _opt3
 R1
 R2
@@ -73,10 +79,10 @@ R3
 T_opt2
 !i145 1
 !i144 0
-!s110 1788150774
-V[GIbj@BXFM9RaOBh=kK?<0
-04 28 4 work instruction_memory_testbench fast 0
-=2-d8bbc1c8598f-6a9503f5-2dc-1084
+!s110 1788458040
+VQfDbY]^gTkCG7g0albnk=2
+04 17 4 work decoder_testbench fast 0
+=2-c8154ecf2579-6a99b438-199-68e0
 R1
 R4
 R5
@@ -89,13 +95,13 @@ R9
 vadd1
 Z10 2C:/Users/danie/Downloads/ARM CPU/add1.sv
 Z11 DXx6 sv_std 3 std 0 22 @5XbY]_OacJl=`ToSm<M^0
-Z12 !s110 1788150765
+Z12 !s110 1788458036
 !i10b 1
 !s100 PT4In06e^A9[0kMV16BF82
 IQfajBjTQFEGMeXod0`CbB1
 S1
 R3
-Z13 w1787463304
+Z13 w1787762842
 Z14 8C:/Users/danie/Downloads/ARM CPU/add1.sv
 Z15 FC:/Users/danie/Downloads/ARM CPU/add1.sv
 !i122 6
@@ -105,7 +111,7 @@ Z17 OL;L;2025.2;82
 r1
 !s85 0
 31
-Z18 !s108 1788150765.000000
+Z18 !s108 1788458036.000000
 Z19 !s107 C:/Users/danie/Downloads/ARM CPU/add1.sv|
 Z20 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/add1.sv|
 !i113 0
@@ -148,7 +154,7 @@ R12
 I7LPf82WzoEd@1WUkX=Ega0
 S1
 R3
-Z26 w1787901526
+Z26 w1787935116
 Z27 8C:/Users/danie/Downloads/ARM CPU/add32.sv
 Z28 FC:/Users/danie/Downloads/ARM CPU/add32.sv
 !i122 5
@@ -158,9 +164,9 @@ R17
 r1
 !s85 0
 31
-Z29 !s108 1788150764.000000
-Z30 !s107 C:/Users/danie/Downloads/ARM CPU/add32.sv|
-Z31 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/add32.sv|
+R18
+Z29 !s107 C:/Users/danie/Downloads/ARM CPU/add32.sv|
+Z30 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/add32.sv|
 !i113 0
 R21
 R22
@@ -185,26 +191,26 @@ R17
 r1
 !s85 0
 31
+R18
 R29
 R30
-R31
 !i113 0
 R21
 R22
 R23
 valu
-Z32 2C:/Users/danie/Downloads/ARM CPU/alu.sv
+Z31 2C:/Users/danie/Downloads/ARM CPU/alu.sv
 R11
 R25
-Z33 !s110 1788150764
+R12
 !i10b 1
 !s100 WOb4_?ALGCN;<f<W]SojS0
 IF@53cn[H7:Ag^kK_K2NJ02
 S1
 R3
-Z34 w1787901511
-Z35 8C:/Users/danie/Downloads/ARM CPU/alu.sv
-Z36 FC:/Users/danie/Downloads/ARM CPU/alu.sv
+R26
+Z32 8C:/Users/danie/Downloads/ARM CPU/alu.sv
+Z33 FC:/Users/danie/Downloads/ARM CPU/alu.sv
 !i122 3
 L0 1 60
 R16
@@ -212,26 +218,26 @@ R17
 r1
 !s85 0
 31
-R29
-Z37 !s107 C:/Users/danie/Downloads/ARM CPU/alu.sv|
-Z38 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/alu.sv|
+R18
+Z34 !s107 C:/Users/danie/Downloads/ARM CPU/alu.sv|
+Z35 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/alu.sv|
 !i113 0
 R21
 R22
 R23
 valu_testbench
-R32
+R31
 R11
 R25
-R33
+R12
 !i10b 1
 !s100 VH=YOMFA35oa2[EQj5R7D3
 IeLT>N;K=j@lHYCo^RoTRo2
 S1
 R3
-R34
-R35
-R36
+R26
+R32
+R33
 !i122 3
 L0 62 24
 R16
@@ -239,9 +245,9 @@ R17
 r1
 !s85 0
 31
-R29
-R37
-R38
+R18
+R34
+R35
 !i113 0
 R21
 R22
@@ -249,13 +255,13 @@ R23
 XCPU_parameters
 2C:/Users/danie/Downloads/ARM CPU/CPU_parameters.sv
 R11
-R33
+Z36 !s110 1788458035
 !i10b 1
 !s100 RfVcZb5bmzkAUDSWUdD_c0
 IeDUW>G9<J8_Ee5=`4cV`f3
 S1
 R3
-Z39 w1787978712
+w1787960874
 8C:/Users/danie/Downloads/ARM CPU/CPU_parameters.sv
 FC:/Users/danie/Downloads/ARM CPU/CPU_parameters.sv
 !i122 1
@@ -265,7 +271,7 @@ R17
 r1
 !s85 0
 31
-R29
+Z37 !s108 1788458035.000000
 !s107 C:/Users/danie/Downloads/ARM CPU/CPU_parameters.sv|
 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/CPU_parameters.sv|
 !i113 0
@@ -274,17 +280,17 @@ R22
 R23
 n@c@p@u_parameters
 vDe0_SoC
-Z40 2C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv
+Z38 2C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv
 R11
-R33
+R36
 !i10b 1
 !s100 Ca6g^hfTC[z<0QK;`K=aP2
 INWWL0_0_S@PDA?7>40CeA1
 S1
 R3
-Z41 w1787445998
-Z42 8C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv
-Z43 FC:/Users/danie/Downloads/ARM CPU/De0_SoC.sv
+R13
+Z39 8C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv
+Z40 FC:/Users/danie/Downloads/ARM CPU/De0_SoC.sv
 !i122 2
 L0 1 9
 R16
@@ -292,26 +298,26 @@ R17
 r1
 !s85 0
 31
-R29
-Z44 !s107 C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv|
-Z45 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv|
+R37
+Z41 !s107 C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv|
+Z42 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv|
 !i113 0
 R21
 R22
 R23
 n@de0_@so@c
 vDe0_SoC_testbench
-R40
+R38
 R11
-R33
+R36
 !i10b 1
 !s100 WRG01XIe<3ao7ET9FzAU`2
 I_TP?f0DUc5<6a0F5TY7Q?1
 S1
 R3
-R41
-R42
-R43
+R13
+R39
+R40
 !i122 2
 L0 11 22
 R16
@@ -319,16 +325,70 @@ R17
 r1
 !s85 0
 31
-R29
-R44
-R45
+R37
+R41
+R42
 !i113 0
 R21
 R22
 R23
 n@de0_@so@c_testbench
+vdecoder
+Z43 2C:/Users/danie/Downloads/ARM CPU/decoder.sv
+R11
+R25
+Z44 !s110 1788458037
+!i10b 1
+!s100 9<F7E;:V:NJC1K@e8fkJI3
+IJVoT[VH:eL8<a;`KUJM4Q3
+S1
+R3
+Z45 w1788457917
+Z46 8C:/Users/danie/Downloads/ARM CPU/decoder.sv
+Z47 FC:/Users/danie/Downloads/ARM CPU/decoder.sv
+!i122 9
+L0 1 17
+R16
+R17
+r1
+!s85 0
+31
+Z48 !s108 1788458037.000000
+Z49 !s107 C:/Users/danie/Downloads/ARM CPU/decoder.sv|
+Z50 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/decoder.sv|
+!i113 0
+R21
+R22
+R23
+vdecoder_testbench
+R43
+R11
+R25
+R44
+!i10b 1
+!s100 5=ha_1JD3KJDRIac0_5bD3
+I7hNzJG3IUUbPXHclhYF_83
+S1
+R3
+R45
+R46
+R47
+!i122 9
+L0 19 16
+R16
+R17
+r1
+!s85 0
+31
+R48
+R49
+R50
+!i113 0
+R21
+R22
+R23
 vinstruction_memory
-Z46 2C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv
+Z51 2C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv
 R11
 R25
 R12
@@ -337,25 +397,25 @@ R12
 I3l4XK6@o:IUBYEH_kK7nd1
 S1
 R3
-Z47 w1788150363
-Z48 8C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv
-Z49 FC:/Users/danie/Downloads/ARM CPU/instruction_memory.sv
+Z52 w1788281041
+Z53 8C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv
+Z54 FC:/Users/danie/Downloads/ARM CPU/instruction_memory.sv
 !i122 8
-Z50 L0 1 13
+Z55 L0 1 13
 R16
 R17
 r1
 !s85 0
 31
 R18
-Z51 !s107 C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv|
-Z52 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv|
+Z56 !s107 C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv|
+Z57 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv|
 !i113 0
 R21
 R22
 R23
 vinstruction_memory_testbench
-R46
+R51
 R11
 R25
 R12
@@ -364,9 +424,9 @@ R12
 ISYkZOLl1?m?RYELU=Zf3a1
 S1
 R3
-R47
-R48
-R49
+R52
+R53
+R54
 !i122 8
 L0 15 14
 R16
@@ -375,14 +435,14 @@ r1
 !s85 0
 31
 R18
-R51
-R52
+R56
+R57
 !i113 0
 R21
 R22
 R23
 vprogram_counter
-Z53 2C:/Users/danie/Downloads/ARM CPU/program_counter.sv
+Z58 2C:/Users/danie/Downloads/ARM CPU/program_counter.sv
 R11
 R25
 R12
@@ -391,25 +451,25 @@ R12
 I@6U?PMXm5Sc2UBb<k1Az]1
 S1
 R3
-Z54 w1788143345
-Z55 8C:/Users/danie/Downloads/ARM CPU/program_counter.sv
-Z56 FC:/Users/danie/Downloads/ARM CPU/program_counter.sv
+R52
+Z59 8C:/Users/danie/Downloads/ARM CPU/program_counter.sv
+Z60 FC:/Users/danie/Downloads/ARM CPU/program_counter.sv
 !i122 7
-R50
+R55
 R16
 R17
 r1
 !s85 0
 31
 R18
-Z57 !s107 C:/Users/danie/Downloads/ARM CPU/program_counter.sv|
-Z58 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/program_counter.sv|
+Z61 !s107 C:/Users/danie/Downloads/ARM CPU/program_counter.sv|
+Z62 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/program_counter.sv|
 !i113 0
 R21
 R22
 R23
 vprogram_counter_testbench
-R53
+R58
 R11
 R25
 R12
@@ -418,9 +478,9 @@ R12
 Id3V9T8Ukn<6h@gidagG<K0
 S1
 R3
-R54
-R55
-R56
+R52
+R59
+R60
 !i122 7
 L0 15 28
 R16
@@ -429,25 +489,25 @@ r1
 !s85 0
 31
 R18
-R57
-R58
+R61
+R62
 !i113 0
 R21
 R22
 R23
 vregister_file
-Z59 2C:/Users/danie/Downloads/ARM CPU/register_file.sv
+Z63 2C:/Users/danie/Downloads/ARM CPU/register_file.sv
 R11
 R25
-R33
+R12
 !i10b 1
 !s100 aA=SOaRH87RY9mI722H@H1
 IfTZ@ld8V2J=3I0AC:JM3?3
 S1
 R3
-R39
-Z60 8C:/Users/danie/Downloads/ARM CPU/register_file.sv
-Z61 FC:/Users/danie/Downloads/ARM CPU/register_file.sv
+Z64 w1787960865
+Z65 8C:/Users/danie/Downloads/ARM CPU/register_file.sv
+Z66 FC:/Users/danie/Downloads/ARM CPU/register_file.sv
 !i122 4
 L0 1 28
 R16
@@ -455,26 +515,26 @@ R17
 r1
 !s85 0
 31
-R29
-Z62 !s107 C:/Users/danie/Downloads/ARM CPU/register_file.sv|
-Z63 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/register_file.sv|
+R18
+Z67 !s107 C:/Users/danie/Downloads/ARM CPU/register_file.sv|
+Z68 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/Users/danie/Downloads/ARM CPU|C:/Users/danie/Downloads/ARM CPU/register_file.sv|
 !i113 0
 R21
 R22
 R23
 vregister_file_testbench
-R59
+R63
 R11
 R25
-R33
+R12
 !i10b 1
 !s100 z9aQ6;=EWn1?@c^JR``=;1
 IPJZ;6TNB:@ciC1IgMU;LV0
 S1
 R3
-R39
-R60
-R61
+R64
+R65
+R66
 !i122 4
 L0 30 47
 R16
@@ -482,9 +542,9 @@ R17
 r1
 !s85 0
 31
-R29
-R62
-R63
+R18
+R67
+R68
 !i113 0
 R21
 R22

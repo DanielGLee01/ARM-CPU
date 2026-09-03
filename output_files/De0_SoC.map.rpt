@@ -1,6 +1,6 @@
 Analysis & Synthesis report for De0_SoC
-Sun Aug 30 21:26:09 2026
-Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Standard Edition
+Thu Sep  3 10:53:47 2026
+Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
 ---------------------
@@ -40,27 +40,27 @@ on the Quartus Prime software download page.
 
 
 
-+---------------------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                                          ;
-+---------------------------------+-----------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun Aug 30 21:26:09 2026               ;
-; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Standard Edition ;
-; Revision Name                   ; De0_SoC                                             ;
-; Top-level Entity Name           ; De0_SoC                                             ;
-; Family                          ; Cyclone V                                           ;
-; Logic utilization (in ALMs)     ; N/A                                                 ;
-; Total registers                 ; 0                                                   ;
-; Total pins                      ; 24                                                  ;
-; Total virtual pins              ; 0                                                   ;
-; Total block memory bits         ; 0                                                   ;
-; Total DSP Blocks                ; 0                                                   ;
-; Total HSSI RX PCSs              ; 0                                                   ;
-; Total HSSI PMA RX Deserializers ; 0                                                   ;
-; Total HSSI TX PCSs              ; 0                                                   ;
-; Total HSSI PMA TX Serializers   ; 0                                                   ;
-; Total PLLs                      ; 0                                                   ;
-; Total DLLs                      ; 0                                                   ;
-+---------------------------------+-----------------------------------------------------+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++---------------------------------+-------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Thu Sep  3 10:53:47 2026           ;
+; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
+; Revision Name                   ; De0_SoC                                         ;
+; Top-level Entity Name           ; De0_SoC                                         ;
+; Family                          ; Cyclone V                                       ;
+; Logic utilization (in ALMs)     ; N/A                                             ;
+; Total registers                 ; 0                                               ;
+; Total pins                      ; 24                                              ;
+; Total virtual pins              ; 0                                               ;
+; Total block memory bits         ; 0                                               ;
+; Total DSP Blocks                ; 0                                               ;
+; Total HSSI RX PCSs              ; 0                                               ;
+; Total HSSI PMA RX Deserializers ; 0                                               ;
+; Total HSSI TX PCSs              ; 0                                               ;
+; Total HSSI PMA TX Serializers   ; 0                                               ;
+; Total PLLs                      ; 0                                               ;
+; Total DLLs                      ; 0                                               ;
++---------------------------------+-------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -155,7 +155,7 @@ on the Quartus Prime software download page.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 16          ;
+; Number detected on machine ; 22          ;
 ; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
@@ -257,8 +257,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
-    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Standard Edition
-    Info: Processing started: Sun Aug 30 21:26:03 2026
+    Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
+    Info: Processing started: Thu Sep  3 10:53:41 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ARMCPU -c De0_SoC
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -285,6 +285,9 @@ Info (12021): Found 2 design units, including 2 entities, in source file program
 Info (12021): Found 2 design units, including 2 entities, in source file instruction_memory.sv
     Info (12023): Found entity 1: instruction_memory File: C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv Line: 1
     Info (12023): Found entity 2: instruction_memory_testbench File: C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv Line: 15
+Info (12021): Found 2 design units, including 2 entities, in source file decoder.sv
+    Info (12023): Found entity 1: decoder File: C:/Users/danie/Downloads/ARM CPU/decoder.sv Line: 1
+    Info (12023): Found entity 2: decoder_testbench File: C:/Users/danie/Downloads/ARM CPU/decoder.sv Line: 19
 Info (12127): Elaborating entity "De0_SoC" for the top level hierarchy
 Warning (10034): Output port "LEDR[9..2]" at De0_SoC.sv(4) has no driver File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 4
 Warning (13024): Output pins are stuck at VCC or GND
@@ -315,8 +318,8 @@ Info (21057): Implemented 24 device resources after synthesis - the final resour
     Info (21058): Implemented 14 input pins
     Info (21059): Implemented 10 output pins
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 24 warnings
-    Info: Peak virtual memory: 4823 megabytes
-    Info: Processing ended: Sun Aug 30 21:26:09 2026
+    Info: Peak virtual memory: 4824 megabytes
+    Info: Processing ended: Thu Sep  3 10:53:47 2026
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:14
 
