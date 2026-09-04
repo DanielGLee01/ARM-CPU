@@ -1,4 +1,4 @@
-module register_rotator import CPU_parameters::*; (operand_2, curr_carry, rotated_num, shifter_carry_out);
+module register_rotator(operand_2, curr_carry, rotated_num, shifter_carry_out);
 	input logic [11:0] operand_2;
 	input logic curr_carry;
 	
@@ -22,8 +22,6 @@ module register_rotator import CPU_parameters::*; (operand_2, curr_carry, rotate
 endmodule
 
 module register_rotator_testbench();
-	import CPU_parameters::*;
-
 	logic [11:0] operand_2;
 	logic curr_carry;	
 	
