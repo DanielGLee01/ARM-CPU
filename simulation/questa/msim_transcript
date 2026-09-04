@@ -30,30 +30,30 @@
 # 
 # vlog -sv -work work +incdir+. {De0_SoC.svo}
 # Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-# Start time: 13:03:12 on Sep 04,2026
+# Start time: 13:27:21 on Sep 04,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+." De0_SoC.svo 
 # ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
 # -- Compiling module De0_SoC
 # 
 # Top level modules:
 # 	De0_SoC
-# End time: 13:03:12 on Sep 04,2026, Elapsed time: 0:00:00
+# End time: 13:27:21 on Sep 04,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vlog -sv -work work +incdir+C:/Users/danie/Downloads/ARM\ CPU {C:/Users/danie/Downloads/ARM CPU/CPU_parameters.sv}
 # Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-# Start time: 13:03:12 on Sep 04,2026
+# Start time: 13:27:22 on Sep 04,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danie/Downloads/ARM CPU" C:/Users/danie/Downloads/ARM CPU/CPU_parameters.sv 
 # ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
 # -- Compiling package CPU_parameters
 # 
 # Top level modules:
 # 	--none--
-# End time: 13:03:12 on Sep 04,2026, Elapsed time: 0:00:00
+# End time: 13:27:22 on Sep 04,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danie/Downloads/ARM\ CPU {C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv}
 # Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-# Start time: 13:03:12 on Sep 04,2026
+# Start time: 13:27:22 on Sep 04,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danie/Downloads/ARM CPU" C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv 
 # ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
 # -- Compiling module De0_SoC
@@ -61,11 +61,11 @@
 # 
 # Top level modules:
 # 	De0_SoC_testbench
-# End time: 13:03:12 on Sep 04,2026, Elapsed time: 0:00:00
+# End time: 13:27:22 on Sep 04,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danie/Downloads/ARM\ CPU {C:/Users/danie/Downloads/ARM CPU/alu.sv}
 # Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-# Start time: 13:03:13 on Sep 04,2026
+# Start time: 13:27:22 on Sep 04,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danie/Downloads/ARM CPU" C:/Users/danie/Downloads/ARM CPU/alu.sv 
 # ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
 # -- Compiling module alu
@@ -74,11 +74,11 @@
 # 
 # Top level modules:
 # 	alu_testbench
-# End time: 13:03:13 on Sep 04,2026, Elapsed time: 0:00:00
+# End time: 13:27:22 on Sep 04,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danie/Downloads/ARM\ CPU {C:/Users/danie/Downloads/ARM CPU/register_file.sv}
 # Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-# Start time: 13:03:13 on Sep 04,2026
+# Start time: 13:27:22 on Sep 04,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danie/Downloads/ARM CPU" C:/Users/danie/Downloads/ARM CPU/register_file.sv 
 # ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
 # -- Compiling module register_file
@@ -87,11 +87,11 @@
 # 
 # Top level modules:
 # 	register_file_testbench
-# End time: 13:03:13 on Sep 04,2026, Elapsed time: 0:00:00
+# End time: 13:27:22 on Sep 04,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danie/Downloads/ARM\ CPU {C:/Users/danie/Downloads/ARM CPU/add32.sv}
 # Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-# Start time: 13:03:13 on Sep 04,2026
+# Start time: 13:27:22 on Sep 04,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danie/Downloads/ARM CPU" C:/Users/danie/Downloads/ARM CPU/add32.sv 
 # ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
 # -- Compiling module add32
@@ -100,11 +100,11 @@
 # 
 # Top level modules:
 # 	add32_testbench
-# End time: 13:03:13 on Sep 04,2026, Elapsed time: 0:00:00
+# End time: 13:27:22 on Sep 04,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danie/Downloads/ARM\ CPU {C:/Users/danie/Downloads/ARM CPU/add1.sv}
 # Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-# Start time: 13:03:13 on Sep 04,2026
+# Start time: 13:27:22 on Sep 04,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danie/Downloads/ARM CPU" C:/Users/danie/Downloads/ARM CPU/add1.sv 
 # ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
 # -- Compiling module add1
@@ -112,11 +112,11 @@
 # 
 # Top level modules:
 # 	add1_testbench
-# End time: 13:03:13 on Sep 04,2026, Elapsed time: 0:00:00
+# End time: 13:27:22 on Sep 04,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danie/Downloads/ARM\ CPU {C:/Users/danie/Downloads/ARM CPU/program_counter.sv}
 # Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-# Start time: 13:03:13 on Sep 04,2026
+# Start time: 13:27:23 on Sep 04,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danie/Downloads/ARM CPU" C:/Users/danie/Downloads/ARM CPU/program_counter.sv 
 # ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
 # -- Compiling module program_counter
@@ -125,11 +125,11 @@
 # 
 # Top level modules:
 # 	program_counter_testbench
-# End time: 13:03:13 on Sep 04,2026, Elapsed time: 0:00:00
+# End time: 13:27:23 on Sep 04,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danie/Downloads/ARM\ CPU {C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv}
 # Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-# Start time: 13:03:13 on Sep 04,2026
+# Start time: 13:27:23 on Sep 04,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danie/Downloads/ARM CPU" C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv 
 # ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
 # -- Compiling module instruction_memory
@@ -138,11 +138,11 @@
 # 
 # Top level modules:
 # 	instruction_memory_testbench
-# End time: 13:03:13 on Sep 04,2026, Elapsed time: 0:00:00
+# End time: 13:27:23 on Sep 04,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danie/Downloads/ARM\ CPU {C:/Users/danie/Downloads/ARM CPU/decoder.sv}
 # Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-# Start time: 13:03:14 on Sep 04,2026
+# Start time: 13:27:23 on Sep 04,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danie/Downloads/ARM CPU" C:/Users/danie/Downloads/ARM CPU/decoder.sv 
 # ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
 # -- Compiling module decoder
@@ -151,11 +151,11 @@
 # 
 # Top level modules:
 # 	decoder_testbench
-# End time: 13:03:14 on Sep 04,2026, Elapsed time: 0:00:00
+# End time: 13:27:23 on Sep 04,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vlog -sv -work work +incdir+C:/Users/danie/Downloads/ARM\ CPU {C:/Users/danie/Downloads/ARM CPU/register_rotator.sv}
 # Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
-# Start time: 13:03:14 on Sep 04,2026
+# Start time: 13:27:23 on Sep 04,2026
 # vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danie/Downloads/ARM CPU" C:/Users/danie/Downloads/ARM CPU/register_rotator.sv 
 # ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
 # -- Compiling module register_rotator
@@ -164,13 +164,38 @@
 # 
 # Top level modules:
 # 	register_rotator_testbench
-# End time: 13:03:14 on Sep 04,2026, Elapsed time: 0:00:00
+# End time: 13:27:23 on Sep 04,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/danie/Downloads/ARM\ CPU {C:/Users/danie/Downloads/ARM CPU/mux_2_to_1.sv}
+# Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 13:27:23 on Sep 04,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danie/Downloads/ARM CPU" C:/Users/danie/Downloads/ARM CPU/mux_2_to_1.sv 
+# ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
+# -- Compiling module mux_2_to_1
+# -- Importing package CPU_parameters
+# -- Compiling module mux_2_to_1_testbench
+# 
+# Top level modules:
+# 	mux_2_to_1_testbench
+# End time: 13:27:23 on Sep 04,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work work +incdir+C:/Users/danie/Downloads/ARM\ CPU {C:/Users/danie/Downloads/ARM CPU/persistent_flags.sv}
+# Questa Altera Starter FPGA Edition-64 vlog 2025.2 Compiler 2025.05 May 31 2025
+# Start time: 13:27:23 on Sep 04,2026
+# vlog -reportprogress 300 -sv -work work "+incdir+C:/Users/danie/Downloads/ARM CPU" C:/Users/danie/Downloads/ARM CPU/persistent_flags.sv 
+# ** Note: (vlog-220) 'modelsim.ini' is used as the ini file.
+# -- Compiling module persistent_flags
+# -- Importing package CPU_parameters
+# 
+# Top level modules:
+# 	persistent_flags
+# End time: 13:27:23 on Sep 04,2026, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # 
 # vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs="+acc"  cpu testbench
 # ** Note: (vsim-220) 'modelsim.ini' is used as the ini file.
 # vsim -t 1ps -L altera_ver -L altera_lnsim_ver -L cyclonev_ver -L lpm_ver -L sgate_ver -L cyclonev_hssi_ver -L altera_mf_ver -L cyclonev_pcie_hip_ver -L gate_work -L work -voptargs=""+acc"" cpu testbench 
-# Start time: 13:03:14 on Sep 04,2026
+# Start time: 13:27:24 on Sep 04,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
 # ** Note: (vopt-220) 'modelsim.ini' is used as the ini file.
@@ -181,28 +206,27 @@
 # Error loading design
 # Error: Error loading design
 #        Pausing macro execution
-# MACRO ./De0_SoC_run_msim_gate_systemverilog.do PAUSED at line 21
-vsim -voptargs=+acc work.register_rotator_testbench
-# vsim -voptargs="+acc" work.register_rotator_testbench 
-# Start time: 13:03:14 on Sep 04,2026
+# MACRO ./De0_SoC_run_msim_gate_systemverilog.do PAUSED at line 23
+vsim -voptargs=+acc work.mux_2_to_1_testbench
+# vsim -voptargs="+acc" work.mux_2_to_1_testbench 
+# Start time: 13:27:24 on Sep 04,2026
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Warning: (vopt-10908) Some optimizations are turned off because the +acc switch is in effect.
 # ** Note: (vopt-220) 'modelsim.ini' is used as the ini file.
 # ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=2, Warnings=2.
 # Loading sv_std.std
 # Loading work.CPU_parameters(fast)
-# Loading work.register_rotator_testbench(fast)
-# Loading work.register_rotator(fast)
-add wave -position end  sim:/register_rotator_testbench/dut/operand_2
-add wave -position end  sim:/register_rotator_testbench/dut/curr_carry
-add wave -position end  sim:/register_rotator_testbench/dut/rotate_field
-add wave -position end  sim:/register_rotator_testbench/dut/rotated_num
-add wave -position end  sim:/register_rotator_testbench/dut/shifter_carry_out
+# Loading work.mux_2_to_1_testbench(fast)
+# Loading work.mux_2_to_1(fast)
+add wave -position end  sim:/mux_2_to_1_testbench/dut/a
+add wave -position end  sim:/mux_2_to_1_testbench/dut/b
+add wave -position end  sim:/mux_2_to_1_testbench/dut/s
+add wave -position end  sim:/mux_2_to_1_testbench/dut/y
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: danie  Hostname: CROUTON  ProcessID: 19292
-#           Attempting to use alternate WLF file "./wlftri026q".
+#           Attempting to use alternate WLF file "./wlft6sxsry".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftri026q
+#           Using alternate file: ./wlft6sxsry
 run -all
-# End time: 13:03:36 on Sep 04,2026, Elapsed time: 0:00:22
+# End time: 13:27:57 on Sep 04,2026, Elapsed time: 0:00:33
 # Errors: 2, Warnings: 4

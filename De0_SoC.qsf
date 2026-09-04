@@ -75,6 +75,8 @@ set_global_assignment -name SYSTEMVERILOG_FILE program_counter.sv
 set_global_assignment -name SYSTEMVERILOG_FILE instruction_memory.sv
 set_global_assignment -name SYSTEMVERILOG_FILE decoder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE register_rotator.sv
+set_global_assignment -name SYSTEMVERILOG_FILE persistent_flags.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux_2_to_1.sv
 set_global_assignment -name EDA_TEST_BENCH_FILE CPU_parameters.sv -section_id "cpu testbench"
 set_global_assignment -name EDA_TEST_BENCH_FILE De0_SoC.sv -section_id "cpu testbench"
 set_global_assignment -name EDA_TEST_BENCH_FILE alu.sv -section_id "cpu testbench"
@@ -86,4 +88,6 @@ set_global_assignment -name EDA_TEST_BENCH_FILE instruction_memory.hex -section_
 set_global_assignment -name EDA_TEST_BENCH_FILE instruction_memory.sv -section_id "cpu testbench"
 set_global_assignment -name EDA_TEST_BENCH_FILE decoder.sv -section_id "cpu testbench"
 set_global_assignment -name EDA_TEST_BENCH_FILE register_rotator.sv -section_id "cpu testbench"
+set_global_assignment -name EDA_TEST_BENCH_FILE mux_2_to_1.sv -section_id "cpu testbench"
+set_global_assignment -name EDA_TEST_BENCH_FILE persistent_flags.sv -section_id "cpu testbench"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -1,0 +1,14 @@
+module mux_2_to_1 import CPU_parameters::*; (a, b, s, y);
+	input logic a, b, s;
+	output logic y;
+	
+	assign y = s ? b : a;
+	
+endmodule
+
+module mux_2_to_1_testbench();
+	import CPU_parameters::*;
+	
+	logic a, b, s, y;
+	
+	

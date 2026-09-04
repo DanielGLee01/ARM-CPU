@@ -1,1 +1,1 @@
-c:/altera_lite/25.1std/questa_fse/win64/VisualizerRls/bin/viscom.exe -nolock -quiet -jmem_size 934320 work.register_rotator_testbench -quiet -auto_acc_if_foreign -work work +acc -allow_unnamed -o _opt2 -id 2-c8154ecf2579-6a9b2404-1fb-3c88 +__betafsm
+c:/altera_lite/25.1std/questa_fse/win64/VisualizerRls/bin/viscom.exe -nolock -quiet -jmem_size 934320 work.mux_2_to_1_testbench -quiet -auto_acc_if_foreign -work work +acc -allow_unnamed -o _opt2 -id 2-c8154ecf2579-6a9b29b3-249-eb0 +__betafsm

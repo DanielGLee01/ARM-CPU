@@ -1,0 +1,7 @@
+module persistent_flags import CPU_parameters::*; ();
+	input logic clk, reset;
+	input logic carry_flag, zero_flag, negative_flag, overflow_flag;
+	input logic S_Bit;
+	
+	
+endmodule
