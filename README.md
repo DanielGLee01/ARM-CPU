@@ -34,7 +34,8 @@ The Decoder takes in the instruction data provided from the instruction memory m
 - Bit 20 is the **S bit**, which updates the persistent flags register if asserted (see condition field). 
 - Bits 19:16 is **Rn**, which specifies the first source operand register.
 - Bits 15:12 is **Rd**, which specifies the destination register.
-- Bits 11:0 specifies the second source operand register. Depending on whether this in immediate mode or not, the data in the bits change.
-    - If this is in immediate mode, then... ***TODO***
-    - If this is not in immediate mode, then... ***TODO***
-
+- Bits 11:0 specifies the second source operand register. Depending on whether this in immediate or register mode, the data in the bits change.
+    - If this is in immediate mode, then the first 4 bits of the field are the rotate field, indicating how many bits to rotate the immediate value by, and the last 8 bits is interpreted as the immediate value itself (so the raw data). This operation is completed by the [Register Rotator](#register-rotator).
+    - If this is in register mode, then... ***TODO***
+### Register Rotator
+If and only if the data from the second operand is an immediate from the decoder, this module takes in that data and splits it into two different fields - one 4 bit field which is described as the rotate field, indicating how many bits to rotate the number by, and another 8 bit immediate field which has the data itself.  
