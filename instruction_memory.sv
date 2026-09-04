@@ -20,7 +20,7 @@ module instruction_memory_testbench();
 	
 	instruction_memory dut (.addr_in, .instr_out);
 	
-	initial begin
+	initial begin // Add assert statements here
 		addr_in = 9'h000; #100;
 		addr_in = 9'h008; #100;
 		addr_in = 9'h010; #100;

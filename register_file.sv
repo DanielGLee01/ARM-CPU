@@ -47,7 +47,7 @@ module register_file_testbench();
 		forever #(CLOCK_PERIOD/2) clk <= ~clk; // Forever toggle the clock
 	end
 	
-	initial begin
+	initial begin // add assert statements
 		reset <= 0; 																				     @(posedge clk);
 																										     @(posedge clk);
 		reset <= 1; 																				     @(posedge clk);
