@@ -42,5 +42,13 @@ module persistent_flags_testbench();
 		reset <= 1; 																				     @(posedge clk);
 																										     @(posedge clk);
 		reset <= 0; 																				     @(posedge clk);
+																											  @(posedge clk);
+		wr_en <= 1; c_flag_in <= 1; z_flag_in <= 1; n_flag_in <= 1; v_flag_in <= 1;  @(posedge clk);
+																										     @(posedge clk);
+		wr_en <= 0; c_flag_in <= 0; z_flag_in <= 0; n_flag_in <= 0; v_flag_in <= 0;  @(posedge clk); // flags should not be overwritten here
+																										     @(posedge clk);
+		wr_en <= 1; c_flag_in <= 0; z_flag_in <= 1; n_flag_in <= 0; v_flag_in <= 1;  @(posedge clk);
+																										     @(posedge clk);
+		$stop;
 	end
 endmodule
