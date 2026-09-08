@@ -38,5 +38,9 @@ module program_counter_testbench();
 																										     @(posedge clk);
 		reset <= 0; 																				     @(posedge clk); // PC counter will keep incrementing by 4 unless reset
 																										     @(posedge clk);
+																										     @(posedge clk);
+																										     @(posedge clk);
+																										     @(posedge clk);
+		$stop;																									  
 	end
 endmodule
