@@ -1,3 +1,2 @@
-1 14 CPU_parameters 4 fast 60 C:/Users/danie/Downloads/ARM CPU/simulation/questa/gate_work 0 0 0 0 3 0
-1 10 mux_2_to_1 4 fast 60 C:/Users/danie/Downloads/ARM CPU/simulation/questa/gate_work 0 0 0 0 13 0
-1 20 mux_2_to_1_testbench 4 fast 60 C:/Users/danie/Downloads/ARM CPU/simulation/questa/gate_work 0 0 0 0 83 0
+1 16 persistent_flags 4 fast 60 C:/Users/danie/Downloads/ARM CPU/simulation/questa/gate_work 0 0 0 0 52 0
+1 26 persistent_flags_testbench 4 fast 60 C:/Users/danie/Downloads/ARM CPU/simulation/questa/gate_work 0 0 0 0 113 0
