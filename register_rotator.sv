@@ -7,7 +7,7 @@ module register_rotator(operand_2, curr_carry, rotated_num, shifter_carry_out);
 	output logic [31:0] rotated_num;
 	output logic shifter_carry_out;
 	
-	assign rotate_field = {operand_2[11:8], 1'b0};
+	assign rotate_field = {operand_2[11:8], 1'b0}; // multiplies rotate field by 2
 	
 	always_comb begin
 		rotated_num = operand_2[7:0]; // imm8 is loaded into rotated_num
