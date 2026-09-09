@@ -39,3 +39,4 @@ The Decoder takes in the instruction data provided from the instruction memory m
     - If this is in register mode, then... ***TODO***
 ### Register Rotator
 If and only if the data from the second operand is an immediate from the decoder, this module takes in that data and splits it into two different fields - one 4 bit field which is described as the rotate field, indicating how many bits to rotate the number by, and another 8 bit immediate field which has the data itself.  
+### Control Unit
