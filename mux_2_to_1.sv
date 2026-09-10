@@ -1,11 +1,11 @@
-parameter WIDTH = 1;
+parameter WIDTH = 32; // changes width of mux inputs
 
 module mux_2_to_1 import CPU_parameters::*; (a, b, s, y);
 	input logic [WIDTH-1:0] a, b;
 	input logic s;
 	output logic [WIDTH-1:0] y;
 	
-	assign y = s ? b : a;
+	assign y = s ? a : b;
 	
 endmodule
 
