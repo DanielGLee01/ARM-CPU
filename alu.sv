@@ -40,13 +40,26 @@ module alu import CPU_parameters::*; (a, b, operation, result, carry_flag, zero_
 				result = a ^ b;
 			end
 			4'b0101: begin // reserved
-				
 			end
 			4'b0110: begin // reserved
-				
 			end
 			4'b0111: begin // reserved
-			
+			end
+			4'b1000: begin // reserved
+			end
+			4'b1001: begin // reserved
+			end
+			4'b1010: begin // reserved
+			end
+			4'b1011: begin // reserved
+			end
+			4'b1100: begin // reserved
+			end
+			4'b1101: begin // reserved
+			end
+			4'b1110: begin // reserved
+			end
+			4'b1111: begin // reserved
 			end
 		endcase
 	end
