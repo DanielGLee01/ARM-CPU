@@ -1,5 +1,5 @@
 Analysis & Synthesis report for De0_SoC
-Thu Sep 10 10:27:46 2026
+Mon Sep 28 12:36:28 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -43,7 +43,7 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Sep 10 10:27:46 2026           ;
+; Analysis & Synthesis Status     ; Successful - Mon Sep 28 12:36:28 2026           ;
 ; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                   ; De0_SoC                                         ;
 ; Top-level Entity Name           ; De0_SoC                                         ;
@@ -258,7 +258,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Thu Sep 10 10:27:40 2026
+    Info: Processing started: Mon Sep 28 12:36:21 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ARMCPU -c De0_SoC
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -267,7 +267,7 @@ Info (12021): Found 2 design units, including 2 entities, in source file de0_soc
     Info (12023): Found entity 2: De0_SoC_testbench File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 11
 Info (12021): Found 2 design units, including 2 entities, in source file alu.sv
     Info (12023): Found entity 1: alu File: C:/Users/danie/Downloads/ARM CPU/alu.sv Line: 1
-    Info (12023): Found entity 2: alu_testbench File: C:/Users/danie/Downloads/ARM CPU/alu.sv Line: 62
+    Info (12023): Found entity 2: alu_testbench File: C:/Users/danie/Downloads/ARM CPU/alu.sv Line: 75
 Info (12021): Found 2 design units, including 2 entities, in source file add1.sv
     Info (12023): Found entity 1: add1 File: C:/Users/danie/Downloads/ARM CPU/add1.sv Line: 2
     Info (12023): Found entity 2: add1_testbench File: C:/Users/danie/Downloads/ARM CPU/add1.sv Line: 11
@@ -299,7 +299,7 @@ Info (12021): Found 2 design units, including 2 entities, in source file mux_2_t
     Info (12023): Found entity 2: mux_2_to_1_testbench File: C:/Users/danie/Downloads/ARM CPU/mux_2_to_1.sv Line: 12
 Info (12021): Found 2 design units, including 2 entities, in source file control_unit.sv
     Info (12023): Found entity 1: control_unit File: C:/Users/danie/Downloads/ARM CPU/control_unit.sv Line: 1
-    Info (12023): Found entity 2: control_unit_testbench File: C:/Users/danie/Downloads/ARM CPU/control_unit.sv Line: 11
+    Info (12023): Found entity 2: control_unit_testbench File: C:/Users/danie/Downloads/ARM CPU/control_unit.sv Line: 68
 Info (12127): Elaborating entity "De0_SoC" for the top level hierarchy
 Warning (10034): Output port "LEDR[9..2]" at De0_SoC.sv(4) has no driver File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 4
 Warning (13024): Output pins are stuck at VCC or GND
@@ -331,8 +331,8 @@ Info (21057): Implemented 24 device resources after synthesis - the final resour
     Info (21059): Implemented 10 output pins
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 24 warnings
     Info: Peak virtual memory: 4824 megabytes
-    Info: Processing ended: Thu Sep 10 10:27:46 2026
-    Info: Elapsed time: 00:00:06
+    Info: Processing ended: Mon Sep 28 12:36:28 2026
+    Info: Elapsed time: 00:00:07
     Info: Total CPU time (on all processors): 00:00:14
 
 
