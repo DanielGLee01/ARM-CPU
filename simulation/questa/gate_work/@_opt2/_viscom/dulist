@@ -1,3 +1,5 @@
 1 14 CPU_parameters 4 fast 60 C:/Users/danie/Downloads/ARM CPU/simulation/questa/gate_work 0 0 0 0 3 0
-1 13 register_file 4 fast 60 C:/Users/danie/Downloads/ARM CPU/simulation/questa/gate_work 0 0 0 0 59 0
-1 23 register_file_testbench 4 fast 60 C:/Users/danie/Downloads/ARM CPU/simulation/questa/gate_work 0 0 0 0 162 0
+1 18 mux_2_to_1_sv_unit 4 fast 60 C:/Users/danie/Downloads/ARM CPU/simulation/questa/gate_work 0 0 0 0 1 0
+1 10 mux_2_to_1 4 fast 60 C:/Users/danie/Downloads/ARM CPU/simulation/questa/gate_work 0 0 0 0 13 0
+1 12 control_unit 4 fast 60 C:/Users/danie/Downloads/ARM CPU/simulation/questa/gate_work 0 0 0 0 13 0
+1 22 control_unit_testbench 4 fast 60 C:/Users/danie/Downloads/ARM CPU/simulation/questa/gate_work 0 0 0 0 29 0

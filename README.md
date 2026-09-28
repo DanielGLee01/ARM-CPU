@@ -14,6 +14,10 @@ After the 32 bit adder module was created, the addition and subtraction operatio
 ### ALU
 
 ### Register File
+The register file is a module that can read and write data to two different addresses. The register file in this module has 16 registers, each being 32 bits wide. The module has 5 inputs:
+- write_en is a 1 bit input that tells the register file whether to write to a specific register or not. If this input is low, no data will be written to any of the registers, preserving data.
+- write_addr specifies the specific register to write data to. Because there are 16 registers in this file, this input is 4 bits wide to account for all 16 registers. Only one register can be written to at a time.
+- write_data is a 32 bit long input that carries data to write to the register. Each of the 16 registers is 32 bits long, which carries information 
 
 ### Program Counter
 
@@ -29,7 +33,7 @@ The Decoder takes in the instruction data provided from the instruction memory m
     | 01 | Load/Store |
     | 10 | Branch and Block Data Transfer |
     | 11 | Coprocessor instructions and software interrupts |
-- Bit 25 is the **I bit**, which distinguishes between whether or not operand 2 (bits 11:0) is an immediate (fixed or constant value) or a register (which points to data).
+- Bit 25 is the **I bit**, which distinguishes between whether or not operand 2 (bits 11:0) is an immediate (fixed or constant value) or a register (which points to data). If this bit is high (1) then operand 2 is an immediate. If this bit is low (0) then operand 2 points to a register.
 - Bits 24:21 is the **opcode**, which tells the control unit which operation should be performed on the data. The control unit takes this signal and interprets in a way that another hardware module (such as the ALU) can properly recieve and execute on.
 - Bit 20 is the **S bit**, which updates the persistent flags register if asserted (see condition field). 
 - Bits 19:16 is **Rn**, which specifies the first source operand register.
@@ -39,4 +43,3 @@ The Decoder takes in the instruction data provided from the instruction memory m
     - If this is in register mode, then... ***TODO***
 ### Register Rotator
 If and only if the data from the second operand is an immediate from the decoder, this module takes in that data and splits it into two different fields - one 4 bit field which is described as the rotate field, indicating how many bits to rotate the number by, and another 8 bit immediate field which has the data itself.  
-### Control Unit
