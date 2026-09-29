@@ -1,3 +1,7 @@
+Sources:
+https://student.cs.uwaterloo.ca/~cs452/docs/ts7200/arm-architecture.pdf
+https://www.mi.fu-berlin.de/inf/groups/ag-tech/projects/ScatterWeb/moduleComponents/ARM7_DDI0027D_7di_ds.pdf
+
 # Overview
 
 This repository aims to create a ARM CPU inside of SystemVerilog, to gain a deeper understanding of how a CPU fundamentally works. Eventually,
