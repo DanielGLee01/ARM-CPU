@@ -1,17 +1,20 @@
-module De0_SoC(SW, KEY, LEDR);
-	input logic [9:0] SW;
-	input logic [3:0] KEY;
-	output logic [9:0] LEDR;
+module De0_SoC import CPU_parameters::*; (clk, reset);
+	input logic clk, reset;
 	
-	assign LEDR[0] = SW[0];
-	assign LEDR[1] = ~KEY[1];
+	logic [PC_WIDTH-1:0] PC_value;
+	logic [DATA_WIDTH-1:0] instruction;
 
+	// wiring modules for fetch stage
+	program_counter PC_start (.clk, .reset, .PC_value);
+	instruction_memory instr_memory_start (.addr_in(PC_value), .instr_out(instruction));
+	
 endmodule
 
 module De0_SoC_testbench();
-	logic [9:0] SW;
-	logic [3:0] KEY;
-	logic [9:0] LEDR;
+	logic clk, reset;
+	
+	logic [PC_WIDTH-1:0] PC_value;
+	logic [DATA_WIDTH-1:0] instruction;	
 	
 	De0_SoC dut (.SW, .KEY, .LEDR);
 	
