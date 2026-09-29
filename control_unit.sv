@@ -1,14 +1,17 @@
-module control_unit import CPU_parameters::*; (I_bit, S_bit, imm_rotated_num, reg_data, opcode_in, oper_2_data, flags_wr_en, ALU_opcode, reg_wr_en, log_arith);
+module control_unit import CPU_parameters::*; (I_bit, S_bit, imm_rotated_num, reg_data, opcode_in, shifter_carry_out, ALU_carry_out, oper_2_data, flags_wr_en, ALU_opcode, reg_wr_en, log_arith, selected_c_out);
 	// operand 2 immediate/register select I/O
 	input logic I_bit, S_bit; // connect S_bit to decoder in top level
 	input logic [DATA_WIDTH-1:0] imm_rotated_num, reg_data; // imm_rotated_num will come from register_rotator, and reg_data will come from register_file
 	input logic [3:0] opcode_in; // Needs to be passed in from instruction from decoder
+	
+	input logic shifter_carry_out, ALU_carry_out; // Pass in from shifter and ALU respectively
 	
 	output logic [DATA_WIDTH-1:0] oper_2_data;
 	output logic flags_wr_en; // this needs to be connected to persistent_flags
 	
 	output logic [3:0] ALU_opcode; // goes to ALU for operation
 	output logic reg_wr_en, log_arith;
+	output logic selected_c_out;
 	
 	logic implemented; // safety bit so no flag overwrite, for unimplemented data processing operations
 	
@@ -116,18 +119,27 @@ module control_unit import CPU_parameters::*; (I_bit, S_bit, imm_rotated_num, re
 		endcase		
 	end
 	
-	mux_2_to_1 sel_carry_out (.a(), .b(), .s(log_arith), .y()); // fix
+	mux_2_to_1 #(.WIDTH(1)) sel_carry_out (.a(ALU_carry_out), .b(shifter_carry_out), .s(log_arith), .y(selected_c_out));
 	
 endmodule
 
-module control_unit_testbench();
+module control_unit_testbench(); // TODO: Write Testbench
 	import CPU_parameters::*;
 	
-	logic I_bit;
+	logic I_bit, S_bit;
 	logic [DATA_WIDTH-1:0] imm_rotated_num, reg_data;
+	logic [3:0] opcode_in;
+	
+	logic shifter_carry_out, ALU_carry_out;
+	logic flags_wr_en;
+	
 	logic [DATA_WIDTH-1:0] oper_2_data;
 	
-	control_unit dut (.I_bit, .S_bit, .imm_rotated_num, .reg_data, .opcode_in, .oper_2_data, .flags_wr_en, .ALU_opcode, .reg_wr_en, .log_arith);
+	logic [3:0] ALU_opcode;
+	logic reg_wr_en, log_arith;
+	logic selected_c_out;
+	
+	control_unit dut (.I_bit, .S_bit, .imm_rotated_num, .reg_data, .opcode_in, .shifter_carry_out, .ALU_carry_out, .oper_2_data, .flags_wr_en, .ALU_opcode, .reg_wr_en, .log_arith, .selected_c_out);
 	
 	initial begin 
 		// testing operand 2 imm/reg select
