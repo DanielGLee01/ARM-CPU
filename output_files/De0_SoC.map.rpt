@@ -1,5 +1,5 @@
 Analysis & Synthesis report for De0_SoC
-Mon Sep 28 12:36:28 2026
+Wed Sep 30 12:50:53 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -14,9 +14,11 @@ Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Post-Synthesis Netlist Statistics for Top Partition
- 10. Elapsed Time Per Partition
- 11. Analysis & Synthesis Messages
+  9. Port Connectivity Checks: "decoder:decode_instr"
+ 10. Port Connectivity Checks: "program_counter:PC_start"
+ 11. Post-Synthesis Netlist Statistics for Top Partition
+ 12. Elapsed Time Per Partition
+ 13. Analysis & Synthesis Messages
 
 
 
@@ -43,14 +45,14 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Sep 28 12:36:28 2026           ;
+; Analysis & Synthesis Status     ; Successful - Wed Sep 30 12:50:53 2026           ;
 ; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                   ; De0_SoC                                         ;
 ; Top-level Entity Name           ; De0_SoC                                         ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
 ; Total registers                 ; 0                                               ;
-; Total pins                      ; 24                                              ;
+; Total pins                      ; 2                                               ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 0                                               ;
 ; Total DSP Blocks                ; 0                                               ;
@@ -166,13 +168,18 @@ on the Quartus Prime software download page.
 +----------------------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                    ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                ; Library ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------+---------+
-; De0_SoC.sv                       ; yes             ; User SystemVerilog HDL File  ; C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv ;         ;
-+----------------------------------+-----------------+------------------------------+---------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                         ;
++----------------------------------+-----------------+---------------------------------------+---------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                             ; File Name with Absolute Path                            ; Library ;
++----------------------------------+-----------------+---------------------------------------+---------------------------------------------------------+---------+
+; instruction_memory.hex           ; yes             ; User Hexadecimal (Intel-Format) File  ; C:/Users/danie/Downloads/ARM CPU/instruction_memory.hex ;         ;
+; De0_SoC.sv                       ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv             ;         ;
+; CPU_parameters.sv                ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/CPU_parameters.sv      ;         ;
+; program_counter.sv               ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/program_counter.sv     ;         ;
+; instruction_memory.sv            ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv  ;         ;
+; decoder.sv                       ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/decoder.sv             ;         ;
++----------------------------------+-----------------+---------------------------------------+---------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -191,14 +198,14 @@ on the Quartus Prime software download page.
 ;                                             ;       ;
 ; Dedicated logic registers                   ; 0     ;
 ;                                             ;       ;
-; I/O pins                                    ; 24    ;
+; I/O pins                                    ; 2     ;
 ;                                             ;       ;
 ; Total DSP Blocks                            ; 0     ;
 ;                                             ;       ;
-; Maximum fan-out node                        ; SW[1] ;
+; Maximum fan-out node                        ; clk   ;
 ; Maximum fan-out                             ; 1     ;
-; Total fan-out                               ; 26    ;
-; Average fan-out                             ; 0.54  ;
+; Total fan-out                               ; 2     ;
+; Average fan-out                             ; 0.50  ;
 +---------------------------------------------+-------+
 
 
@@ -207,7 +214,7 @@ on the Quartus Prime software download page.
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
-; |De0_SoC                   ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 24   ; 0            ; |De0_SoC            ; De0_SoC     ; work         ;
+; |De0_SoC                   ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 2    ; 0            ; |De0_SoC            ; De0_SoC     ; work         ;
 +----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -227,20 +234,41 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
++----------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "decoder:decode_instr"                                                                           ;
++------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port             ; Type   ; Severity ; Details                                                                             ;
++------------------+--------+----------+-------------------------------------------------------------------------------------+
+; condition        ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; opcode           ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; Rn               ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; Rd               ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; class_identifier ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; I_bit            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; S_bit            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; operand_2        ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "program_counter:PC_start"                                                                     ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                             ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+; PC_value[1..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++----------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
-+-----------------------+-----------------------------+
-; Type                  ; Count                       ;
-+-----------------------+-----------------------------+
-; arriav_lcell_comb     ; 2                           ;
-;     normal            ; 2                           ;
-;         0 data inputs ; 1                           ;
-;         1 data inputs ; 1                           ;
-; boundary_port         ; 24                          ;
-;                       ;                             ;
-; Max LUT depth         ; 1.00                        ;
-; Average LUT depth     ; 0.50                        ;
-+-----------------------+-----------------------------+
++-------------------+---------------------------------+
+; Type              ; Count                           ;
++-------------------+---------------------------------+
+; boundary_port     ; 2                               ;
+;                   ;                                 ;
+; Max LUT depth     ; 0.00                            ;
+; Average LUT depth ; 0.00                            ;
++-------------------+---------------------------------+
 
 
 +-------------------------------+
@@ -258,13 +286,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Mon Sep 28 12:36:21 2026
+    Info: Processing started: Wed Sep 30 12:50:47 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ARMCPU -c De0_SoC
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 2 design units, including 2 entities, in source file de0_soc.sv
     Info (12023): Found entity 1: De0_SoC File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 1
-    Info (12023): Found entity 2: De0_SoC_testbench File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 11
+    Info (12023): Found entity 2: De0_SoC_testbench File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 21
 Info (12021): Found 2 design units, including 2 entities, in source file alu.sv
     Info (12023): Found entity 1: alu File: C:/Users/danie/Downloads/ARM CPU/alu.sv Line: 1
     Info (12023): Found entity 2: alu_testbench File: C:/Users/danie/Downloads/ARM CPU/alu.sv Line: 75
@@ -295,44 +323,32 @@ Info (12021): Found 2 design units, including 2 entities, in source file persist
     Info (12023): Found entity 1: persistent_flags File: C:/Users/danie/Downloads/ARM CPU/persistent_flags.sv Line: 1
     Info (12023): Found entity 2: persistent_flags_testbench File: C:/Users/danie/Downloads/ARM CPU/persistent_flags.sv Line: 23
 Info (12021): Found 2 design units, including 2 entities, in source file mux_2_to_1.sv
-    Info (12023): Found entity 1: mux_2_to_1 File: C:/Users/danie/Downloads/ARM CPU/mux_2_to_1.sv Line: 3
-    Info (12023): Found entity 2: mux_2_to_1_testbench File: C:/Users/danie/Downloads/ARM CPU/mux_2_to_1.sv Line: 12
+    Info (12023): Found entity 1: mux_2_to_1 File: C:/Users/danie/Downloads/ARM CPU/mux_2_to_1.sv Line: 1
+    Info (12023): Found entity 2: mux_2_to_1_testbench File: C:/Users/danie/Downloads/ARM CPU/mux_2_to_1.sv Line: 10
 Info (12021): Found 2 design units, including 2 entities, in source file control_unit.sv
     Info (12023): Found entity 1: control_unit File: C:/Users/danie/Downloads/ARM CPU/control_unit.sv Line: 1
-    Info (12023): Found entity 2: control_unit_testbench File: C:/Users/danie/Downloads/ARM CPU/control_unit.sv Line: 68
+    Info (12023): Found entity 2: control_unit_testbench File: C:/Users/danie/Downloads/ARM CPU/control_unit.sv Line: 126
 Info (12127): Elaborating entity "De0_SoC" for the top level hierarchy
-Warning (10034): Output port "LEDR[9..2]" at De0_SoC.sv(4) has no driver File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 4
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "LEDR[2]" is stuck at GND File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 4
-    Warning (13410): Pin "LEDR[3]" is stuck at GND File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 4
-    Warning (13410): Pin "LEDR[4]" is stuck at GND File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 4
-    Warning (13410): Pin "LEDR[5]" is stuck at GND File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 4
-    Warning (13410): Pin "LEDR[6]" is stuck at GND File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 4
-    Warning (13410): Pin "LEDR[7]" is stuck at GND File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 4
-    Warning (13410): Pin "LEDR[8]" is stuck at GND File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 4
-    Warning (13410): Pin "LEDR[9]" is stuck at GND File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 4
+Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:PC_start" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 13
+Warning (10230): Verilog HDL assignment warning at program_counter.sv(10): truncated value with size 32 to match size of target (11) File: C:/Users/danie/Downloads/ARM CPU/program_counter.sv Line: 10
+Info (12128): Elaborating entity "instruction_memory" for hierarchy "instruction_memory:instr_memory_start" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 14
+Warning (10850): Verilog HDL warning at instruction_memory.sv(9): number of words (7) in memory file does not match the number of elements in the address range [0:511] File: C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv Line: 9
+Warning (10030): Net "memory_array.data_a" at instruction_memory.sv(5) has no driver or initial value, using a default initial value '0' File: C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv Line: 5
+Warning (10030): Net "memory_array.waddr_a" at instruction_memory.sv(5) has no driver or initial value, using a default initial value '0' File: C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv Line: 5
+Warning (10030): Net "memory_array.we_a" at instruction_memory.sv(5) has no driver or initial value, using a default initial value '0' File: C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv Line: 5
+Info (12128): Elaborating entity "decoder" for hierarchy "decoder:decode_instr" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 17
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 12 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "SW[1]" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 2
-    Warning (15610): No output dependent on input pin "SW[2]" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 2
-    Warning (15610): No output dependent on input pin "SW[3]" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 2
-    Warning (15610): No output dependent on input pin "SW[4]" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 2
-    Warning (15610): No output dependent on input pin "SW[5]" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 2
-    Warning (15610): No output dependent on input pin "SW[6]" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 2
-    Warning (15610): No output dependent on input pin "SW[7]" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 2
-    Warning (15610): No output dependent on input pin "SW[8]" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 2
-    Warning (15610): No output dependent on input pin "SW[9]" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 2
-    Warning (15610): No output dependent on input pin "KEY[0]" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 3
-    Warning (15610): No output dependent on input pin "KEY[2]" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 3
-    Warning (15610): No output dependent on input pin "KEY[3]" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 3
-Info (21057): Implemented 24 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 14 input pins
-    Info (21059): Implemented 10 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 24 warnings
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "clk" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 2
+    Warning (15610): No output dependent on input pin "reset" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 2
+Info (21057): Implemented 2 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 0 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
     Info: Peak virtual memory: 4824 megabytes
-    Info: Processing ended: Mon Sep 28 12:36:28 2026
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:14
+    Info: Processing ended: Wed Sep 30 12:50:53 2026
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:15
 
 

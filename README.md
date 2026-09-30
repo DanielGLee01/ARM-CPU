@@ -40,7 +40,7 @@ The Decoder takes in the instruction data provided from the instruction memory m
 - Bits 15:12 is **Rd**, which specifies the destination register.
 - Bits 11:0 specifies the second source operand register. Depending on whether this in immediate or register mode, the data in the bits change.
     - If this is in immediate mode, then the first 4 bits of the field are the rotate field, indicating how many bits to rotate the immediate value by, and the last 8 bits is interpreted as the immediate value itself (so the raw data). This operation is completed by the [Register Rotator](#register-rotator).
-    - If this is in register mode, then bits 11 to 4 are all set to 0. Bits 3 to 0 indicate the second source operand register.
+    - If this is in register mode, then bits 11 to 4 are all set to 0. Bits 3 to 0 indicate the second source operand register.1010
 ### Register Rotator
 If and only if the data from the second operand is an immediate from the decoder, this module takes in that data and splits it into two different fields - one 4 bit field which is described as the rotate field, indicating how many bits to rotate the number by, and another 8 bit immediate field which has the data itself.  
 
