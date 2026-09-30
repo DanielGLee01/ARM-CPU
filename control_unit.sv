@@ -123,7 +123,7 @@ module control_unit import CPU_parameters::*; (I_bit, S_bit, imm_rotated_num, re
 	
 endmodule
 
-module control_unit_testbench(); // TODO: Write Testbench
+module control_unit_testbench();
 	import CPU_parameters::*;
 	
 	logic I_bit, S_bit;
@@ -145,5 +145,35 @@ module control_unit_testbench(); // TODO: Write Testbench
 		// testing operand 2 imm/reg select
 		I_bit = 0; imm_rotated_num = 32'hFFFFFFFF; reg_data = 32'hCCCCCCCC; #100; // register data should be output here
 		I_bit = 1; imm_rotated_num = 32'hFFFFFFFF; reg_data = 32'hCCCCCCCC; #100; // immediate data should be output here
+		
+		// test data processing and carry out selection, make sure correct cases are being selected
+		opcode_in = 4'b0010; S_bit = 1; ALU_carry_out = 0; shifter_carry_out = 1; #100; // Testing SUB
+		assert (ALU_opcode === 4'b0001) else $error("Test 1 failed, ALU_opcode mismatch: got %b expected 4'b0001", ALU_opcode);
+		assert (reg_wr_en === 1) else $error("Test 1 failed, reg_wr_en signal mismatch: got %b expected 1", reg_wr_en);
+		assert (log_arith === 1) else $error("Test 1 failed, log_arith signal mismatch: got %b expected 1", log_arith);
+		assert (flags_wr_en === 1) else $error("Test 1 failed, flags_wr_en signal mismatch: got %b expected 1", flags_wr_en);
+		assert (selected_c_out === 0) else $error("Test 1 failed, selected_c_out returned %b expected 0", selected_c_out);
+		
+		opcode_in = 4'b1010; S_bit = 0; ALU_carry_out = 1; shifter_carry_out = 0; #100; // Testing CMP
+		assert (ALU_opcode === 4'b0001) else $error("Test 2 failed, ALU_opcode mismatch: got %b expected 4'b0001", ALU_opcode);
+		assert (reg_wr_en === 0) else $error("Test 2 failed, reg_wr_en signal mismatch: got %b expected 1", reg_wr_en);
+		assert (log_arith === 1) else $error("Test 2 failed, log_arith signal mismatch: got %b expected 1", log_arith);
+		assert (flags_wr_en === 0) else $error("Test 2 failed, flags_wr_en signal mismatch: got %b expected 0", flags_wr_en);
+		assert (selected_c_out === 1) else $error("Test 2 failed, selected_c_out returned %b expected 1", selected_c_out);
+
+		opcode_in = 4'b1000; S_bit = 0; ALU_carry_out = 0; shifter_carry_out = 1; #100; // Testing TST
+		assert (ALU_opcode === 4'b0010) else $error("Test 3 failed, ALU_opcode mismatch: got %b expected 4'b0001", ALU_opcode);
+		assert (reg_wr_en === 0) else $error("Test 3 failed, reg_wr_en signal mismatch: got %b expected 0", reg_wr_en);
+		assert (log_arith === 0) else $error("Test 3 failed, log_arith signal mismatch: got %b expected 0", log_arith);
+		assert (flags_wr_en === 0) else $error("Test 3 failed, flags_wr_en signal mismatch: got %b expected 0", flags_wr_en);
+		assert (selected_c_out === 1) else $error("Test 3 failed, selected_c_out returned %b expected 1", selected_c_out);
+
+		// Testing unimplemented 
+		opcode_in = 4'b0110; S_bit = 1; ALU_carry_out = 1; shifter_carry_out = 0; #100; // Testing SBC (unimplmented)
+		assert (ALU_opcode === 4'b0001) else $error("Test 4 failed, ALU_opcode mismatch: got %b expected 4'b0001", ALU_opcode);
+		assert (reg_wr_en === 0) else $error("Test 4 failed, reg_wr_en signal mismatch: got %b expected 1", reg_wr_en);
+		assert (log_arith === 1) else $error("Test 4 failed, log_arith signal mismatch: got %b expected 1", log_arith);
+		assert (flags_wr_en === 0) else $error("Test 4 failed, flags_wr_en signal mismatch: got %b expected 1", flags_wr_en);
+		assert (selected_c_out === 1) else $error("Test 4 failed, selected_c_out returned %b expected 1", selected_c_out);
 	end
 endmodule
