@@ -1,4 +1,4 @@
-module register_file import CPU_parameters::*; (clk, reset, read_register_A, read_register_B, read_data_A, read_data_B, write_addr, write_data, write_en);
+module register_file import CPU_parameters::*; (clk, reset, read_register_A, read_register_B, write_addr, write_data, write_en, read_data_A, read_data_B);
 	input logic clk, reset;
 	input logic [3:0] read_register_A, read_register_B; 
 	input logic [3:0] write_addr;
