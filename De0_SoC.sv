@@ -3,32 +3,45 @@ module De0_SoC import CPU_parameters::*; (clk, reset);
 	
 	logic [PC_WIDTH-1:0] PC_value;
 	logic [DATA_WIDTH-1:0] instruction;
+	logic [DATA_WIDTH-1:0] rn_data, rm_data, op2_value;
 	
 	logic [3:0] condition, opcode, Rn, Rd;
 	logic [1:0] class_identifier;
 	logic I_bit, S_bit;
 	logic [11:0] operand_2;
 	
-	logic shifter_carry_out, ALU_carry_out;
+	logic shifter_carry_out; // First produced from rotator module, gets fed into control unit's mux
 	
-	logic c_flag, z_flag, n_flag, v_flag;
+	logic alu_c_flag, alu_z_flag, alu_n_flag, alu_v_flag;
 	logic flags_wr_en;
+	
+	logic mux_selected_carry, c_stored;
+	
+	logic [3:0] ALU_opcode;
+	
+	logic [DATA_WIDTH-1:0] rotated_num;
+	logic [DATA_WIDTH-1:0] ALU_result;
+	
+	logic reg_wr_en;
+	
+	// This is currently unused, because no modules utilize these flags yet
+	logic z_stored, n_stored, v_stored;
 
 	// wiring modules for fetch stage
-	program_counter PC_start (.clk, .reset, .PC_value); // done
-	instruction_memory instr_memory_start (.addr_in(PC_value[10:2]), .instr_out(instruction)); // done
+	program_counter pc (.clk, .reset, .PC_value);
+	instruction_memory imem (.addr_in(PC_value[PC_WIDTH-1:2]), .instr_out(instruction));
 	
 	// wiring modules for decode/writeback stage
-	decoder decode_instr (.instr_in(instruction), .condition, .opcode, .Rn, .Rd, .class_identifier, .I_bit, .S_bit, .operand_2); // done
-	register_file read_reg (.clk, .reset, .read_register_A(Rn), .read_register_B(operand_2[3:0]), .write_addr(/*do*/), .write_data(/*do*/), .write_en(/*do*/), .read_data_A(/*do*/), .read_data_B(/*do*/));
-	register_rotator rotate_operand2 (.operand_2, .curr_carry(/*do*/), .rotated_num(/*do*/), .shifter_carry_out(/*do*/));
-	control_unit control (.I_bit, .S_bit, .imm_rotated_num(rotated_num), .reg_data(/*do*/), .opcode_in(opcode), .shifter_carry_out, .ALU_carry_out, .oper_2_data(/*do*/), .flags_wr_en, .ALU_opcode(/*do*/), .reg_wr_en(/*do*/), .log_arith(/*do*/), .selected_c_out(/*do*/));
+	decoder dec (.instr_in(instruction), .condition, .opcode, .Rn, .Rd, .class_identifier, .I_bit, .S_bit, .operand_2);
+	register_file reg_file (.clk, .reset, .read_register_A(Rn), .read_register_B(operand_2[3:0]), .write_addr(Rd), .write_data(ALU_result), .write_en(reg_wr_en), .read_data_A(rn_data), .read_data_B(rm_data));
+	register_rotator rotator (.operand_2, .curr_carry(c_stored), .rotated_num, .shifter_carry_out);
+	control_unit control (.I_bit, .S_bit, .imm_rotated_num(rotated_num), .reg_data(rm_data), .opcode_in(opcode), .shifter_carry_out, .ALU_carry_out(alu_c_flag), .oper_2_data(op2_value), .flags_wr_en, .ALU_opcode, .reg_wr_en, .selected_c_out(mux_selected_carry));
 	
 	// wiring modules for execute stage
-	alu begin_op (.a(/*do*/), .b(/*do*/), .operation(/*do*/), .result(/*do*/), .carry_flag(c_flag), .zero_flag(z_flag), .negative_flag(n_flag), .overflow_flag(v_flag));
+	alu alu_inst (.a(rn_data), .b(op2_value), .operation(ALU_opcode), .result(ALU_result), .carry_flag(alu_c_flag), .zero_flag(alu_z_flag), .negative_flag(alu_n_flag), .overflow_flag(alu_v_flag));
 	
 	// wiring for writeback to flags
-	persistent_flags update_flags (.clk, .reset, .c_flag_in(c_flag), .z_flag_in(z_flag), .n_flag_in(n_flag), .v_flag_in(v_flag), .wr_en(flags_wr_en), .c_flag_out(/*do*/), .z_flag_out(/*do*/), .n_flag_out(/*do*/), .v_flag_out(/*do*/));
+	persistent_flags flags (.clk, .reset, .c_flag_in(mux_selected_carry), .z_flag_in(alu_z_flag), .n_flag_in(alu_n_flag), .v_flag_in(alu_v_flag), .wr_en(flags_wr_en), .c_flag_out(c_stored), .z_flag_out(z_stored), .n_flag_out(n_stored), .v_flag_out(v_stored));
 endmodule
 
 module De0_SoC_testbench();
@@ -55,5 +68,8 @@ module De0_SoC_testbench();
 																										     @(posedge clk);
 																										     @(posedge clk);
 																										     @(posedge clk);
+																										     @(posedge clk);
+																										     @(posedge clk);
+   $stop;
 	end
 endmodule

@@ -16,7 +16,7 @@ module alu import CPU_parameters::*; (a, b, operation, result, carry_flag, zero_
 		add_or_sub_sig = 0;
 		
 		case(operation)
-			4'b0000: begin //addition operation
+			4'b0000: begin // addition operation
 				cin = 0;
 				add_or_sub_sig = 0;
 				result = arithmetic_result;
