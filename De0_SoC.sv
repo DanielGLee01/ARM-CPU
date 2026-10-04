@@ -5,4 +5,6 @@ module De0_SoC (CLOCK_50, KEY, SW, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, LEDR);
 	
 	output logic [6:0]  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
 	output logic [9:0]  LEDR;
+	
+	
 endmodule
