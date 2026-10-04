@@ -49,7 +49,7 @@ module cpu_core_testbench();
 	
 	logic clk, reset;
 	
-	De0_SoC dut (.clk, .reset);
+	cpu_core dut (.clk, .reset);
 	
 	// Set up a simulated clock.
 	parameter CLOCK_PERIOD=100;
