@@ -7,7 +7,7 @@ module program_counter import CPU_parameters::*; (clk, reset, PC_value);
 			PC_value <= 0;
 		end
 		else begin
-			PC_value <= PC_value + 4;
+			PC_value <= PC_value + 11'd4;
 		end
 	end
 endmodule

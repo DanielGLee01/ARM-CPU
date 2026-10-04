@@ -1,4 +1,4 @@
-module control_unit import CPU_parameters::*; (I_bit, S_bit, imm_rotated_num, reg_data, opcode_in, shifter_carry_out, ALU_carry_out, oper_2_data, flags_wr_en, ALU_opcode, reg_wr_en, log_arith, selected_c_out);
+module control_unit import CPU_parameters::*; (I_bit, S_bit, imm_rotated_num, reg_data, opcode_in, shifter_carry_out, ALU_carry_out, oper_2_data, flags_wr_en, ALU_opcode, reg_wr_en, selected_c_out);
 	// operand 2 immediate/register select I/O
 	input logic I_bit, S_bit; // connect S_bit to decoder in top level
 	input logic [DATA_WIDTH-1:0] imm_rotated_num, reg_data; // imm_rotated_num will come from register_rotator, and reg_data will come from register_file
@@ -10,10 +10,11 @@ module control_unit import CPU_parameters::*; (I_bit, S_bit, imm_rotated_num, re
 	output logic flags_wr_en; // this needs to be connected to persistent_flags
 	
 	output logic [3:0] ALU_opcode; // goes to ALU for operation
-	output logic reg_wr_en, log_arith;
+	output logic reg_wr_en;
 	output logic selected_c_out;
 	
-	logic implemented; // safety bit so no flag overwrite, for unimplemented data processing operations
+	// safety bit so no flag overwrite, for unimplemented data processing operations. log_arith is used for the mux to decide which carryout to use
+	logic implemented, log_arith;
 	
 	// Chooses between register and immediate mode for Operand 2
 	mux_2_to_1 oper_2_reg_imm (.a(imm_rotated_num), .b(reg_data), .s(I_bit), .y(oper_2_data));
@@ -136,10 +137,10 @@ module control_unit_testbench();
 	logic [DATA_WIDTH-1:0] oper_2_data;
 	
 	logic [3:0] ALU_opcode;
-	logic reg_wr_en, log_arith;
+	logic reg_wr_en;
 	logic selected_c_out;
 	
-	control_unit dut (.I_bit, .S_bit, .imm_rotated_num, .reg_data, .opcode_in, .shifter_carry_out, .ALU_carry_out, .oper_2_data, .flags_wr_en, .ALU_opcode, .reg_wr_en, .log_arith, .selected_c_out);
+	control_unit dut (.I_bit, .S_bit, .imm_rotated_num, .reg_data, .opcode_in, .shifter_carry_out, .ALU_carry_out, .oper_2_data, .flags_wr_en, .ALU_opcode, .reg_wr_en, .selected_c_out);
 	
 	initial begin 
 		// testing operand 2 imm/reg select
@@ -150,21 +151,18 @@ module control_unit_testbench();
 		opcode_in = 4'b0010; S_bit = 1; ALU_carry_out = 0; shifter_carry_out = 1; #100; // Testing SUB
 		assert (ALU_opcode === 4'b0001) else $error("Test 1 failed, ALU_opcode mismatch: got %b expected 4'b0001", ALU_opcode);
 		assert (reg_wr_en === 1) else $error("Test 1 failed, reg_wr_en signal mismatch: got %b expected 1", reg_wr_en);
-		assert (log_arith === 1) else $error("Test 1 failed, log_arith signal mismatch: got %b expected 1", log_arith);
 		assert (flags_wr_en === 1) else $error("Test 1 failed, flags_wr_en signal mismatch: got %b expected 1", flags_wr_en);
 		assert (selected_c_out === 0) else $error("Test 1 failed, selected_c_out returned %b expected 0", selected_c_out);
 		
 		opcode_in = 4'b1010; S_bit = 0; ALU_carry_out = 1; shifter_carry_out = 0; #100; // Testing CMP
 		assert (ALU_opcode === 4'b0001) else $error("Test 2 failed, ALU_opcode mismatch: got %b expected 4'b0001", ALU_opcode);
 		assert (reg_wr_en === 0) else $error("Test 2 failed, reg_wr_en signal mismatch: got %b expected 1", reg_wr_en);
-		assert (log_arith === 1) else $error("Test 2 failed, log_arith signal mismatch: got %b expected 1", log_arith);
 		assert (flags_wr_en === 0) else $error("Test 2 failed, flags_wr_en signal mismatch: got %b expected 0", flags_wr_en);
 		assert (selected_c_out === 1) else $error("Test 2 failed, selected_c_out returned %b expected 1", selected_c_out);
 
 		opcode_in = 4'b1000; S_bit = 0; ALU_carry_out = 0; shifter_carry_out = 1; #100; // Testing TST
 		assert (ALU_opcode === 4'b0010) else $error("Test 3 failed, ALU_opcode mismatch: got %b expected 4'b0001", ALU_opcode);
 		assert (reg_wr_en === 0) else $error("Test 3 failed, reg_wr_en signal mismatch: got %b expected 0", reg_wr_en);
-		assert (log_arith === 0) else $error("Test 3 failed, log_arith signal mismatch: got %b expected 0", log_arith);
 		assert (flags_wr_en === 0) else $error("Test 3 failed, flags_wr_en signal mismatch: got %b expected 0", flags_wr_en);
 		assert (selected_c_out === 1) else $error("Test 3 failed, selected_c_out returned %b expected 1", selected_c_out);
 
@@ -172,7 +170,6 @@ module control_unit_testbench();
 		opcode_in = 4'b0110; S_bit = 1; ALU_carry_out = 1; shifter_carry_out = 0; #100; // Testing SBC (unimplmented)
 		assert (ALU_opcode === 4'b0001) else $error("Test 4 failed, ALU_opcode mismatch: got %b expected 4'b0001", ALU_opcode);
 		assert (reg_wr_en === 0) else $error("Test 4 failed, reg_wr_en signal mismatch: got %b expected 1", reg_wr_en);
-		assert (log_arith === 1) else $error("Test 4 failed, log_arith signal mismatch: got %b expected 1", log_arith);
 		assert (flags_wr_en === 0) else $error("Test 4 failed, flags_wr_en signal mismatch: got %b expected 1", flags_wr_en);
 		assert (selected_c_out === 1) else $error("Test 4 failed, selected_c_out returned %b expected 1", selected_c_out);
 	end

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for De0_SoC
-Wed Sep 30 12:50:53 2026
+Fri Oct  2 11:09:22 2026
 Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
 
 
@@ -14,11 +14,14 @@ Quartus Prime Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
   8. General Register Statistics
-  9. Port Connectivity Checks: "decoder:decode_instr"
- 10. Port Connectivity Checks: "program_counter:PC_start"
- 11. Post-Synthesis Netlist Statistics for Top Partition
- 12. Elapsed Time Per Partition
- 13. Analysis & Synthesis Messages
+  9. Parameter Settings for User Entity Instance: control_unit:control|mux_2_to_1:oper_2_reg_imm
+ 10. Parameter Settings for User Entity Instance: control_unit:control|mux_2_to_1:sel_carry_out
+ 11. Port Connectivity Checks: "persistent_flags:flags"
+ 12. Port Connectivity Checks: "decoder:dec"
+ 13. Port Connectivity Checks: "program_counter:pc"
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
 
 
 
@@ -45,7 +48,7 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Sep 30 12:50:53 2026           ;
+; Analysis & Synthesis Status     ; Successful - Fri Oct  2 11:09:22 2026           ;
 ; Quartus Prime Version           ; 25.1std.0 Build 1129 10/21/2025 SC Lite Edition ;
 ; Revision Name                   ; De0_SoC                                         ;
 ; Top-level Entity Name           ; De0_SoC                                         ;
@@ -175,10 +178,18 @@ on the Quartus Prime software download page.
 +----------------------------------+-----------------+---------------------------------------+---------------------------------------------------------+---------+
 ; instruction_memory.hex           ; yes             ; User Hexadecimal (Intel-Format) File  ; C:/Users/danie/Downloads/ARM CPU/instruction_memory.hex ;         ;
 ; De0_SoC.sv                       ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv             ;         ;
+; alu.sv                           ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/alu.sv                 ;         ;
+; add1.sv                          ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/add1.sv                ;         ;
+; add32.sv                         ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/add32.sv               ;         ;
+; register_file.sv                 ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/register_file.sv       ;         ;
 ; CPU_parameters.sv                ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/CPU_parameters.sv      ;         ;
 ; program_counter.sv               ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/program_counter.sv     ;         ;
 ; instruction_memory.sv            ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv  ;         ;
 ; decoder.sv                       ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/decoder.sv             ;         ;
+; register_rotator.sv              ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/register_rotator.sv    ;         ;
+; persistent_flags.sv              ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/persistent_flags.sv    ;         ;
+; mux_2_to_1.sv                    ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/mux_2_to_1.sv          ;         ;
+; control_unit.sv                  ; yes             ; User SystemVerilog HDL File           ; C:/Users/danie/Downloads/ARM CPU/control_unit.sv        ;         ;
 +----------------------------------+-----------------+---------------------------------------+---------------------------------------------------------+---------+
 
 
@@ -234,24 +245,49 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 
 
++---------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: control_unit:control|mux_2_to_1:oper_2_reg_imm ;
++----------------+-------+--------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                               ;
++----------------+-------+--------------------------------------------------------------------+
+; WIDTH          ; 32    ; Signed Integer                                                     ;
++----------------+-------+--------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: control_unit:control|mux_2_to_1:sel_carry_out ;
++----------------+-------+-------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                              ;
++----------------+-------+-------------------------------------------------------------------+
+; WIDTH          ; 1     ; Signed Integer                                                    ;
++----------------+-------+-------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "persistent_flags:flags"                                                                   ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; z_flag_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; n_flag_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; v_flag_out ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +----------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "decoder:decode_instr"                                                                           ;
+; Port Connectivity Checks: "decoder:dec"                                                                                    ;
 +------------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port             ; Type   ; Severity ; Details                                                                             ;
 +------------------+--------+----------+-------------------------------------------------------------------------------------+
 ; condition        ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; opcode           ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; Rn               ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; Rd               ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 ; class_identifier ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; I_bit            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; S_bit            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-; operand_2        ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
 +------------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "program_counter:PC_start"                                                                     ;
+; Port Connectivity Checks: "program_counter:pc"                                                                           ;
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
 ; Port           ; Type   ; Severity ; Details                                                                             ;
 +----------------+--------+----------+-------------------------------------------------------------------------------------+
@@ -286,13 +322,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 25.1std.0 Build 1129 10/21/2025 SC Lite Edition
-    Info: Processing started: Wed Sep 30 12:50:47 2026
+    Info: Processing started: Fri Oct  2 11:09:16 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ARMCPU -c De0_SoC
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 2 design units, including 2 entities, in source file de0_soc.sv
     Info (12023): Found entity 1: De0_SoC File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 1
-    Info (12023): Found entity 2: De0_SoC_testbench File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 21
+    Info (12023): Found entity 2: De0_SoC_testbench File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 47
 Info (12021): Found 2 design units, including 2 entities, in source file alu.sv
     Info (12023): Found entity 1: alu File: C:/Users/danie/Downloads/ARM CPU/alu.sv Line: 1
     Info (12023): Found entity 2: alu_testbench File: C:/Users/danie/Downloads/ARM CPU/alu.sv Line: 75
@@ -327,16 +363,24 @@ Info (12021): Found 2 design units, including 2 entities, in source file mux_2_t
     Info (12023): Found entity 2: mux_2_to_1_testbench File: C:/Users/danie/Downloads/ARM CPU/mux_2_to_1.sv Line: 10
 Info (12021): Found 2 design units, including 2 entities, in source file control_unit.sv
     Info (12023): Found entity 1: control_unit File: C:/Users/danie/Downloads/ARM CPU/control_unit.sv Line: 1
-    Info (12023): Found entity 2: control_unit_testbench File: C:/Users/danie/Downloads/ARM CPU/control_unit.sv Line: 126
+    Info (12023): Found entity 2: control_unit_testbench File: C:/Users/danie/Downloads/ARM CPU/control_unit.sv Line: 127
 Info (12127): Elaborating entity "De0_SoC" for the top level hierarchy
-Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:PC_start" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 13
-Warning (10230): Verilog HDL assignment warning at program_counter.sv(10): truncated value with size 32 to match size of target (11) File: C:/Users/danie/Downloads/ARM CPU/program_counter.sv Line: 10
-Info (12128): Elaborating entity "instruction_memory" for hierarchy "instruction_memory:instr_memory_start" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 14
+Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:pc" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 31
+Info (12128): Elaborating entity "instruction_memory" for hierarchy "instruction_memory:imem" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 32
 Warning (10850): Verilog HDL warning at instruction_memory.sv(9): number of words (7) in memory file does not match the number of elements in the address range [0:511] File: C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv Line: 9
 Warning (10030): Net "memory_array.data_a" at instruction_memory.sv(5) has no driver or initial value, using a default initial value '0' File: C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv Line: 5
 Warning (10030): Net "memory_array.waddr_a" at instruction_memory.sv(5) has no driver or initial value, using a default initial value '0' File: C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv Line: 5
 Warning (10030): Net "memory_array.we_a" at instruction_memory.sv(5) has no driver or initial value, using a default initial value '0' File: C:/Users/danie/Downloads/ARM CPU/instruction_memory.sv Line: 5
-Info (12128): Elaborating entity "decoder" for hierarchy "decoder:decode_instr" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 17
+Info (12128): Elaborating entity "decoder" for hierarchy "decoder:dec" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 35
+Info (12128): Elaborating entity "register_file" for hierarchy "register_file:reg_file" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 36
+Info (12128): Elaborating entity "register_rotator" for hierarchy "register_rotator:rotator" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 37
+Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:control" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 38
+Info (12128): Elaborating entity "mux_2_to_1" for hierarchy "control_unit:control|mux_2_to_1:oper_2_reg_imm" File: C:/Users/danie/Downloads/ARM CPU/control_unit.sv Line: 20
+Info (12128): Elaborating entity "mux_2_to_1" for hierarchy "control_unit:control|mux_2_to_1:sel_carry_out" File: C:/Users/danie/Downloads/ARM CPU/control_unit.sv Line: 123
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu_inst" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 41
+Info (12128): Elaborating entity "add32" for hierarchy "alu:alu_inst|add32:add_or_subtract" File: C:/Users/danie/Downloads/ARM CPU/alu.sv Line: 69
+Info (12128): Elaborating entity "add1" for hierarchy "alu:alu_inst|add32:add_or_subtract|add1:adders[0].adder" File: C:/Users/danie/Downloads/ARM CPU/add32.sv Line: 17
+Info (12128): Elaborating entity "persistent_flags" for hierarchy "persistent_flags:flags" File: C:/Users/danie/Downloads/ARM CPU/De0_SoC.sv Line: 44
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 2 input pin(s) that do not drive logic
@@ -345,9 +389,9 @@ Warning (21074): Design contains 2 input pin(s) that do not drive logic
 Info (21057): Implemented 2 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 0 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 8 warnings
     Info: Peak virtual memory: 4824 megabytes
-    Info: Processing ended: Wed Sep 30 12:50:53 2026
+    Info: Processing ended: Fri Oct  2 11:09:22 2026
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:15
 
