@@ -1,0 +1,7 @@
+db/
+output_files/
+simulation/
+incremental_db/
+De0_SoC.qsf
+De0_SoC.qws
+De0_SoC.sv.bak
