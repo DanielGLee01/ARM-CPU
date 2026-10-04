@@ -6,3 +6,17 @@ De0_SoC.qsf
 De0_SoC.qws
 De0_SoC.sv.bak
 De0_SoC_nativelink_simulation.rpt
+CPU_parameters.sv.bak
+add1.sv.bak
+add32.sv.bak
+alu.sv.bak
+control_unit.sv.bak
+decoder.sv.bak
+instruction_memory.sv.bak
+mux_2_to_1.sv.bak
+persistent_flags.sv.bak
+program_counter.sv.bak
+register_file.sv.bak
+register_rotator.sv.bak
+sub1.sv.bak
+sub32.sv.bak
