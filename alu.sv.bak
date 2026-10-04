@@ -1,7 +1,0 @@
-module alu(SW, KEY, LEDR);
-
-endmodule
-
-module De0_SoC_testbench();
-
-endmodule
