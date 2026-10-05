@@ -1,5 +1,8 @@
-module cpu_core import CPU_parameters::*; (clk, reset, step_en);	
+module cpu_core import CPU_parameters::*; (clk, reset, step_en, fpga_display_addr, fpga_display_data);	
 	input logic clk, reset, step_en;
+	
+	input logic [3:0] fpga_display_addr;
+	output logic [DATA_WIDTH-1:0] fpga_display_data;
 	
 	logic [PC_WIDTH-1:0] PC_value;
 	logic [DATA_WIDTH-1:0] instruction;
@@ -33,7 +36,7 @@ module cpu_core import CPU_parameters::*; (clk, reset, step_en);
 	
 	// wiring modules for decode/writeback stage
 	decoder dec (.instr_in(instruction), .condition, .opcode, .Rn, .Rd, .class_identifier, .I_bit, .S_bit, .operand_2);
-	register_file reg_file (.clk, .reset, .read_register_A(Rn), .read_register_B(operand_2[3:0]), .write_addr(Rd), .write_data(ALU_result), .write_en(reg_wr_en), .step_en, .read_data_A(rn_data), .read_data_B(rm_data));
+	register_file reg_file (.clk, .reset, .read_register_A(Rn), .read_register_B(operand_2[3:0]), .fpga_display_addr, .write_addr(Rd), .write_data(ALU_result), .write_en(reg_wr_en), .step_en, .read_data_A(rn_data), .read_data_B(rm_data), .fpga_display_data);
 	register_rotator rotator (.operand_2, .curr_carry(c_stored), .rotated_num, .shifter_carry_out);
 	control_unit control (.I_bit, .S_bit, .imm_rotated_num(rotated_num), .reg_data(rm_data), .opcode_in(opcode), .shifter_carry_out, .ALU_carry_out(alu_c_flag), .oper_2_data(op2_value), .flags_wr_en, .ALU_opcode, .reg_wr_en, .selected_c_out(mux_selected_carry));
 	
@@ -48,8 +51,10 @@ module cpu_core_testbench(); // add cases for step_en
 	import CPU_parameters::*;
 	
 	logic clk, reset, step_en;
+	logic [3:0] fpga_display_addr;
+	logic [DATA_WIDTH-1:0] fpga_display_data;
 	
-	cpu_core dut (.clk, .reset, .step_en);
+	cpu_core dut (.clk, .reset, .step_en, .fpga_display_addr, .fpga_display_data);
 	
 	// Set up a simulated clock.
 	parameter CLOCK_PERIOD=100;

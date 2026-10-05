@@ -27,7 +27,7 @@ module persistent_flags_testbench(); // add case for step_en
 	
 	logic c_flag_out, z_flag_out, n_flag_out, v_flag_out;
 	
-	persistent_flags dut (.clk, .reset, step_en, .c_flag_in, .z_flag_in, .n_flag_in, .v_flag_in, .wr_en, .c_flag_out, .z_flag_out, .n_flag_out, .v_flag_out);
+	persistent_flags dut (.clk, .reset, .step_en, .c_flag_in, .z_flag_in, .n_flag_in, .v_flag_in, .wr_en, .c_flag_out, .z_flag_out, .n_flag_out, .v_flag_out);
 	
 	// Set up a simulated clock.
 	parameter CLOCK_PERIOD = 100;
