@@ -2,6 +2,7 @@ db/
 output_files/
 simulation/
 incremental_db/
+devkits/
 De0_SoC.qws
 De0_SoC.sv.bak
 De0_SoC_nativelink_simulation.rpt
