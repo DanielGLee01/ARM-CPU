@@ -132,6 +132,9 @@ set_location_assignment PIN_Y22 -to HEX0[4]
 set_location_assignment PIN_Y21 -to HEX0[5]
 set_location_assignment PIN_AA22 -to HEX0[6]
 set_location_assignment PIN_M9 -to CLOCK_50
+set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
+set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
+set_global_assignment -name SYSTEMVERILOG_FILE double_ff.sv
 set_global_assignment -name SDC_FILE De0_SoC.sdc
 set_global_assignment -name SYSTEMVERILOG_FILE seg7_decoder.sv
 set_global_assignment -name SYSTEMVERILOG_FILE cpu_core.sv
@@ -149,9 +152,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE register_rotator.sv
 set_global_assignment -name SYSTEMVERILOG_FILE persistent_flags.sv
 set_global_assignment -name SYSTEMVERILOG_FILE mux_2_to_1.sv
 set_global_assignment -name SYSTEMVERILOG_FILE control_unit.sv
-set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
-set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
-set_global_assignment -name SYSTEMVERILOG_FILE d_ff.sv
+set_global_assignment -name SYSTEMVERILOG_FILE edge_detector.sv
 set_global_assignment -name EDA_TEST_BENCH_FILE CPU_parameters.sv -section_id "cpu testbench"
 set_global_assignment -name EDA_TEST_BENCH_FILE De0_SoC.sv -section_id "cpu testbench"
 set_global_assignment -name EDA_TEST_BENCH_FILE alu.sv -section_id "cpu testbench"
@@ -168,5 +169,6 @@ set_global_assignment -name EDA_TEST_BENCH_FILE persistent_flags.sv -section_id 
 set_global_assignment -name EDA_TEST_BENCH_FILE control_unit.sv -section_id "cpu testbench"
 set_global_assignment -name EDA_TEST_BENCH_FILE cpu_core.sv -section_id "cpu testbench"
 set_global_assignment -name EDA_TEST_BENCH_FILE seg7_decoder.sv -section_id "cpu testbench"
-set_global_assignment -name EDA_TEST_BENCH_FILE d_ff.sv -section_id "cpu testbench"
+set_global_assignment -name EDA_TEST_BENCH_FILE edge_detector.sv -section_id "cpu testbench"
+set_global_assignment -name EDA_TEST_BENCH_FILE double_ff.sv -section_id "cpu testbench"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
