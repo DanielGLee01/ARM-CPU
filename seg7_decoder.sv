@@ -16,7 +16,7 @@ module seg7_decoder (four_bit_num, segment_display);
 			4'b1001: segment_display = 7'b0011000; // 9
 			4'b1010: segment_display = 7'b0001000; // A
 			4'b1011: segment_display = 7'b0000011; // B
-			4'b1100: segment_display = 7'b1001001; // C
+			4'b1100: segment_display = 7'b1000110; // C
 			4'b1101: segment_display = 7'b0100001; // D
 			4'b1110: segment_display = 7'b0000110; // E
 			4'b1111: segment_display = 7'b0001110; // F
@@ -56,7 +56,7 @@ module seg7_decoder_testbench();
 		four_bit_num = 4'b1011; #100;
 		assert (segment_display === 7'b0000011) else $error("B not coded correctly, got %b expecting 7'b0000011", segment_display);
 		four_bit_num = 4'b1100; #100;
-		assert (segment_display === 7'b1001001) else $error("C not coded correctly, got %b expecting 7'b1001001", segment_display);
+		assert (segment_display === 7'b1000110) else $error("C not coded correctly, got %b expecting 7'b1000110", segment_display);
 		four_bit_num = 4'b1101; #100;
 		assert (segment_display === 7'b0100001) else $error("D not coded correctly, got %b expecting 7'b0100001", segment_display);
 		four_bit_num = 4'b1110; #100;
