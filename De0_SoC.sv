@@ -14,9 +14,17 @@ module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1, HEX2, H
 	assign HEX5 = 7'b1111111;
 	assign LEDR = 10'b0000000000;
 	
+	logic step_sync, step_pulse, reset_sync;
+	
+	// preventing metastability for button presses
+	double_ff key3_sync (.clk(CLOCK_50), .in(~KEY[3]), .out(step_sync));
+	edge_detector key3_detect (.clk(CLOCK_50), .in(step_sync), .out(step_pulse));
+	
+	double_ff key0 (.clk(CLOCK_50), .in(~KEY[0]), .out(reset_sync));
+	
 	// CPU Start
 	mux_2_to_1 #(.WIDTH(16)) upper_lower_bits (.a(fpga_display_data[31:16]), .b(fpga_display_data[15:0]), .s(SW[4]), .y(halfed_bits));
-	cpu_core cpu_start (.clk(CLOCK_50), .reset(~KEY[0]), .step_en(~KEY[3]), .fpga_display_addr(SW[3:0]), .fpga_display_data);
+	cpu_core cpu_start (.clk(CLOCK_50), .reset(reset_sync), .step_en(step_pulse), .fpga_display_addr(SW[3:0]), .fpga_display_data);
 	
 	// Splits halfed bits into 4 groups for 4 different hex lights
 	seg7_decoder hex3_data (.four_bit_num(halfed_bits[15:12]), .segment_display(HEX3));
