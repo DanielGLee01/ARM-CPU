@@ -1,5 +1,5 @@
-module persistent_flags(clk, reset, c_flag_in, z_flag_in, n_flag_in, v_flag_in, wr_en, c_flag_out, z_flag_out, n_flag_out, v_flag_out);
-	input logic clk, reset;
+module persistent_flags(clk, reset, step_en, c_flag_in, z_flag_in, n_flag_in, v_flag_in, wr_en, c_flag_out, z_flag_out, n_flag_out, v_flag_out);
+	input logic clk, reset, step_en;
 	input logic c_flag_in, z_flag_in, n_flag_in, v_flag_in;
 	input logic wr_en; // S Bit
 	
@@ -11,7 +11,7 @@ module persistent_flags(clk, reset, c_flag_in, z_flag_in, n_flag_in, v_flag_in, 
 			z_flag_out <= 0;
 			n_flag_out <= 0;
 			v_flag_out <= 0;
-		end else if (wr_en) begin
+		end else if (wr_en & step_en) begin
 			c_flag_out <= c_flag_in;
 			z_flag_out <= z_flag_in;
 			n_flag_out <= n_flag_in;
@@ -20,14 +20,14 @@ module persistent_flags(clk, reset, c_flag_in, z_flag_in, n_flag_in, v_flag_in, 
 	end
 endmodule
 
-module persistent_flags_testbench();
-	logic clk, reset;
+module persistent_flags_testbench(); // add case for step_en
+	logic clk, reset, step_en;
 	logic c_flag_in, z_flag_in, n_flag_in, v_flag_in; 
 	logic wr_en;
 	
 	logic c_flag_out, z_flag_out, n_flag_out, v_flag_out;
 	
-	persistent_flags dut (.clk, .reset, .c_flag_in, .z_flag_in, .n_flag_in, .v_flag_in, .wr_en, .c_flag_out, .z_flag_out, .n_flag_out, .v_flag_out);
+	persistent_flags dut (.clk, .reset, step_en, .c_flag_in, .z_flag_in, .n_flag_in, .v_flag_in, .wr_en, .c_flag_out, .z_flag_out, .n_flag_out, .v_flag_out);
 	
 	// Set up a simulated clock.
 	parameter CLOCK_PERIOD = 100;

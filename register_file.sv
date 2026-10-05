@@ -1,9 +1,11 @@
-module register_file import CPU_parameters::*; (clk, reset, read_register_A, read_register_B, write_addr, write_data, write_en, read_data_A, read_data_B);
+module register_file import CPU_parameters::*; (clk, reset, read_register_A, read_register_B, write_addr, write_data, write_en, step_en, read_data_A, read_data_B);
 	input logic clk, reset;
 	input logic [3:0] read_register_A, read_register_B; 
 	input logic [3:0] write_addr;
 	input logic [DATA_WIDTH-1:0] write_data;
 	input logic write_en;
+	
+	input logic step_en;
 	
 	output logic [DATA_WIDTH-1:0] read_data_A, read_data_B;
 	
@@ -16,7 +18,7 @@ module register_file import CPU_parameters::*; (clk, reset, read_register_A, rea
 				my_register[i] <= 0;
 			end
 		end
-		else if (write_en) begin
+		else if (write_en & step_en) begin
 			my_register[write_addr] <= write_data; // Find which register to write to (according to write_addr) and write the data to it (write_data)
 		end
 	end
@@ -27,7 +29,7 @@ module register_file import CPU_parameters::*; (clk, reset, read_register_A, rea
 	assign read_data_B = my_register[read_register_B];
 endmodule
 
-module register_file_testbench();
+module register_file_testbench(); // add case for step_en
 	import CPU_parameters::*;
 	
 	logic clk, reset;
@@ -36,9 +38,11 @@ module register_file_testbench();
 	logic [DATA_WIDTH-1:0] write_data;
 	logic write_en;
 	
+	logic step_en;
+	
 	logic [DATA_WIDTH-1:0] read_data_A, read_data_B;
 	
-	register_file dut (.clk, .reset, .read_register_A, .read_register_B, .read_data_A, .read_data_B, .write_addr, .write_data, .write_en);
+	register_file dut (.clk, .reset, .read_register_A, .read_register_B, .write_addr, .write_data, .write_en, .step_en, .read_data_A, .read_data_B);
 	
 	// Set up a simulated clock.
 	parameter CLOCK_PERIOD = 100;

@@ -1,12 +1,12 @@
-module program_counter import CPU_parameters::*; (clk, reset, PC_value);
-	input logic clk, reset;
+module program_counter import CPU_parameters::*; (clk, reset, enable, PC_value);
+	input logic clk, reset, enable;
 	output logic [PC_WIDTH-1:0] PC_value;
 	
 	always_ff @(posedge clk) begin
 		if (reset) begin
 			PC_value <= 0;
 		end
-		else begin
+		else if (enable) begin
 			PC_value <= PC_value + 11'd4;
 		end
 	end
@@ -15,10 +15,10 @@ endmodule
 module program_counter_testbench();
 	import CPU_parameters::*;
 	
-	logic clk, reset;
+	logic clk, reset, enable;
 	logic [PC_WIDTH-1:0] PC_value;
 	
-	program_counter dut (.clk, .reset, .PC_value);
+	program_counter dut (.clk, .reset, .enable, .PC_value);
 	
 	// Set up a simulated clock.
 	parameter CLOCK_PERIOD = 100;
