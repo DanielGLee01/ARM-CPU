@@ -23,4 +23,5 @@ sub32.sv.bak
 c5_pin_model_dump.txt
 seg7_decoder.sv.bak
 cpu_core.sv.bak
-d_ff.sv.bak
+double_ff.sv.bak
+edge_detector.sv.bak
