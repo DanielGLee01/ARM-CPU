@@ -1,13 +1,14 @@
 # Overview
 
-This repository aims to create a ARM CPU inside of SystemVerilog, to gain a deeper understanding of how a CPU fundamentally works. Eventually,
-this will be implemented onto an FPGA, with physical I/O.
+This repository aims to create a 32 bit ARM CPU inside of SystemVerilog, to gain a deeper understanding of how a CPU fundamentally works. As of now, functionality of a single-cycle CPU has been completed, with some physical interaction on the I/O of the De0_SoC-CV board (documented in the README in the fpga-bringup branch).
 
-## Workflow
+## Workflow (currently im adding a bunch of functionality notes that should really be in the explanation, so change that when I can)
 
 I started this project by creating a 1 bit adder. These 1 bit adders were ripple-chained together to create a 32 bit adder, as the CPU in this project is a 32 bit ARM CPU.
 
-After the 32 bit adder module was created, the addition and subtraction operations were implemented into the ALU. With addition and subtraction operations also came the zero, negative, overflow and carry flags. Bitwise AND, OR and XOR were added shortly afterwards.
+After the 32 bit adder module was created, the addition and subtraction operations were implemented into the ALU. With addition and subtraction operations also came the zero, negative, overflow and carry flags. Bitwise AND, OR and XOR were added shortly afterwards. My initial implementation of the ALU used a 3 bit opcode, however this was changed later to accomodate more operations thta the ALU could support.
+
+I then created a global parameter file containing some parameters for my design. These include the value of the width of the data (which is 32 bits), the amount of registers I have (which is 16) and the width of my program counter (which is 11). This is because the instruction memory defined in this program holds 512 words, with each word being a 4 byte instruction, making my instruction memory 2048 bytes. To properly cover all addresses, this requires 11 bits, because $ 2^{11} = 2048 $. There is a caveat however - we increment the program counter by 4 to go to the next instruction, so that would mean that the bottom two bits of the program counter would never be manipulated and would always stay at 0. 
 
 ## Explanation of each component:
 
@@ -20,8 +21,10 @@ The register file is a module that can read and write data to two different addr
 - write_data is a 32 bit long input that carries data to write to the register. Each of the 16 registers is 32 bits long, which carries information 
 
 ### Program Counter
+The Program Counter is a module that increments its own value by 4 every rising clock edge. The program counter in this CPU is 11 bits wide - this is because our instruction memory can store up to 512 words, with each word being 4 bytes. In order to properly iterate through every word in the instruction memory, we need enough bits to be able to cover all words. We have $ 4\, \text{bytes} \times 512\, \text{words} = 2048\, \text{bytes total} $, and in order to cover all 2048 bytes, we need a sufficient amount of bits, which would be 11, because $ 2^{11} = 2048$. However, because we only have and want to access 512 words, we have to increment our program counter by 4 instead of 1, because $ 2048 ÷ 4 = 512 $. 
 
 ### Instruction Memory
+The Instruction Memory is a module that initializes an empty array of 512 words that are each 32 bits (or 4 bytes) each. The [instruction_memory.hex](instruction_memory.hex) file in this project contains instructions that the CPU will use to execute operations, which are each mapped into the array. Because there are only 512 "spaces", we use a 9 bit address as an input to grab the instructions, since $ 2^9 = 512 $. In this CPU, because of the constraint listed above with the Program Counter, we truncate the two least significant bits because they are never being touched when incrementing the 11 bit Program Counter value. The module then takes whatever address it got (which should just be a number from 0 to 511) and then grabs the instruction at that index as an output.
 
 ### Decoder
 The Decoder takes in the instruction data provided from the instruction memory module, and splits the fields into multiple different fields:
