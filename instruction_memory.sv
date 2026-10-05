@@ -22,10 +22,10 @@ module instruction_memory_testbench();
 	
 	initial begin
 		addr_in = 9'h000; #100;
-		assert (instr_out === 32'hFFFFFFFF) else $error("data mismatch: got %b, expected FFFFFFFF", instr_out);
-		addr_in = 9'h008; #100;
-		assert (instr_out === 32'h59f8622e) else $error("data mismatch: got %b, expected 59f8622e", instr_out);
-		addr_in = 9'h010; #100;
-		assert (instr_out === 32'h1f155371) else $error("data mismatch: got %b, expected 1f155371", instr_out);
+		assert (instr_out === 32'hE290100F) else $error("data mismatch: got %b, expected E290100F", instr_out);
+		addr_in = 9'h003; #100;
+		assert (instr_out === 32'hE29AC31B) else $error("data mismatch: got %b, expected E29AC31B", instr_out);
+		addr_in = 9'h005; #100;
+		assert (instr_out === 32'hE1510001) else $error("data mismatch: got %b, expected E1510001", instr_out);
 	end
 endmodule
