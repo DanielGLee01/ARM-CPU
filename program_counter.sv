@@ -1,3 +1,5 @@
+`default_nettype none
+
 module program_counter import CPU_parameters::*; (clk, reset, enable, PC_value);
 	input logic clk, reset, enable;
 	output logic [PC_WIDTH-1:0] PC_value;

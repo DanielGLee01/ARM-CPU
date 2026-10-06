@@ -1,3 +1,5 @@
+`default_nettype none
+
 module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, LEDR);
 	input logic CLOCK_50;
 	input logic [3:0] KEY;

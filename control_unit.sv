@@ -1,3 +1,5 @@
+`default_nettype none
+
 module control_unit import CPU_parameters::*; (I_bit, S_bit, imm_rotated_num, reg_data, opcode_in, shifter_carry_out, ALU_carry_out, oper_2_data, flags_wr_en, ALU_opcode, reg_wr_en, selected_c_out);
 	// operand 2 immediate/register select I/O
 	input logic I_bit, S_bit; // connect S_bit to decoder in top level

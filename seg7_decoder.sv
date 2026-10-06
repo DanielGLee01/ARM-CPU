@@ -1,3 +1,5 @@
+`default_nettype none
+
 module seg7_decoder (four_bit_num, segment_display);
 	input logic [3:0] four_bit_num;
 	output logic [6:0] segment_display;

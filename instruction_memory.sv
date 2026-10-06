@@ -1,3 +1,5 @@
+`default_nettype none
+
 module instruction_memory import CPU_parameters::*; (addr_in, instr_out, fpga_display_instr);
 	input logic [8:0] addr_in;
 	output logic [DATA_WIDTH-1:0] instr_out, fpga_display_instr;

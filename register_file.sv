@@ -1,3 +1,5 @@
+`default_nettype none
+
 module register_file import CPU_parameters::*; (clk, reset, read_register_A, read_register_B, fpga_display_addr_in, write_addr, write_data, write_en, step_en, read_data_A, read_data_B, fpga_display_data);
 	input logic clk, reset;
 	input logic [3:0] read_register_A, read_register_B, fpga_display_addr_in; 

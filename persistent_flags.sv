@@ -1,3 +1,5 @@
+`default_nettype none
+
 module persistent_flags(clk, reset, step_en, c_flag_in, z_flag_in, n_flag_in, v_flag_in, wr_en, c_flag_out, z_flag_out, n_flag_out, v_flag_out);
 	input logic clk, reset, step_en;
 	input logic c_flag_in, z_flag_in, n_flag_in, v_flag_in;

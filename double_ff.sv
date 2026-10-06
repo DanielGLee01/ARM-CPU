@@ -10,6 +10,8 @@ module double_ff (clk, in, out);
 	end
 endmodule
 
+`default_nettype none
+
 module double_ff_testbench();
 	logic clk, in, out;
 	

@@ -1,3 +1,5 @@
+`default_nettype none
+
 module cpu_core import CPU_parameters::*; (clk, reset, step_en, fpga_display_addr_in, fpga_display_data, fpga_display_instr);	
 	input logic clk, reset, step_en;
 	

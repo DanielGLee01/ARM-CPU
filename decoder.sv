@@ -1,3 +1,5 @@
+`default_nettype none
+
 module decoder import CPU_parameters::*; (instr_in, condition, opcode, Rn, Rd, class_identifier, I_bit, S_bit, operand_2);
 	input logic [DATA_WIDTH-1:0] instr_in;
 	

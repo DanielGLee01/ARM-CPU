@@ -1,3 +1,5 @@
+`default_nettype none
+
 // 32 bit full adder
 module add32 import CPU_parameters::*; (a, b, cin, sum, cout);
 	input logic [DATA_WIDTH-1:0] a, b;

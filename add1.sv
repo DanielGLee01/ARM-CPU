@@ -1,3 +1,5 @@
+`default_nettype none
+
 // 1 bit full adder
 module add1(a, b, cin, sum, cout);
 	input logic a, b, cin;

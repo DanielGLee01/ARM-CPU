@@ -1,3 +1,5 @@
+`default_nettype none
+
 module alu import CPU_parameters::*; (a, b, operation, result, carry_flag, zero_flag, negative_flag, overflow_flag);
 	input logic [DATA_WIDTH-1:0] a, b;
 	input logic [3:0] operation;
