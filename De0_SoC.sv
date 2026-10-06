@@ -1,20 +1,25 @@
 module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5, LEDR);
 	input logic CLOCK_50;
-	input logic [3:0]  KEY;
-	input logic [9:0]  SW;
+	input logic [3:0] KEY;
+	input logic [9:0] SW;
 	
-	output logic [6:0]  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
-	output logic [9:0]  LEDR;
+	output logic [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
+	output logic [9:0] LEDR;
 	
 	logic [DATA_WIDTH-1:0] fpga_display_data, fpga_display_instr;
 	logic [15:0] halfed_bits_data, halfed_bits_instr, halfed_bits;
 	
 	// Turn off HEX displays and LEDS
 	assign HEX4 = 7'b1111111;
-	assign HEX5 = 7'b1111111;
 	assign LEDR = 10'b0000000000;
 	
 	logic step_sync, step_pulse, reset_sync;
+	
+	// Adds a counter to HEX5, showing which register is selected (may remove later)
+	logic [6:0] reg_num;
+	
+	seg7_decoder track_reg_num (.four_bit_num(SW[3:0]), .segment_display(reg_num));
+	mux_2_to_1 #(.WIDTH(7)) display_reg_num (.a(7'b1111111), .b(reg_num), .s(SW[5]), .y(HEX5));
 	
 	// Turns KEY3 into a step button, to advance instructions with one press
 	double_ff key3_sync (.clk(CLOCK_50), .in(~KEY[3]), .out(step_sync));
@@ -29,7 +34,7 @@ module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1, HEX2, H
 	mux_2_to_1 #(.WIDTH(16)) instr_or_data (.a(halfed_bits_instr), .b(halfed_bits_data), .s(SW[5]), .y(halfed_bits));
 	
 	// CPU Start
-	cpu_core cpu_start (.clk(CLOCK_50), .reset(reset_sync), .step_en(step_pulse), .fpga_display_addr(SW[3:0]), .fpga_display_data, .fpga_display_instr);
+	cpu_core cpu_start (.clk(CLOCK_50), .reset(reset_sync), .step_en(step_pulse), .fpga_display_addr_in(SW[3:0]), .fpga_display_data, .fpga_display_instr);
 	
 	// Splits halfed bits into 4 groups for 4 different hex lights
 	seg7_decoder hex3_data (.four_bit_num(halfed_bits[15:12]), .segment_display(HEX3));

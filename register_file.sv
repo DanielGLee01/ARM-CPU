@@ -1,6 +1,6 @@
-module register_file import CPU_parameters::*; (clk, reset, read_register_A, read_register_B, fpga_display_addr, write_addr, write_data, write_en, step_en, read_data_A, read_data_B, fpga_display_data);
+module register_file import CPU_parameters::*; (clk, reset, read_register_A, read_register_B, fpga_display_addr_in, write_addr, write_data, write_en, step_en, read_data_A, read_data_B, fpga_display_data);
 	input logic clk, reset;
-	input logic [3:0] read_register_A, read_register_B, fpga_display_addr; 
+	input logic [3:0] read_register_A, read_register_B, fpga_display_addr_in; 
 	input logic [3:0] write_addr;
 	input logic [DATA_WIDTH-1:0] write_data;
 	input logic write_en;
@@ -27,14 +27,14 @@ module register_file import CPU_parameters::*; (clk, reset, read_register_A, rea
 	// TODO: write this as mux and decoder for extra practice
 	assign read_data_A = my_register[read_register_A];
 	assign read_data_B = my_register[read_register_B];
-	assign fpga_display_data = my_register[fpga_display_addr];
+	assign fpga_display_data = my_register[fpga_display_addr_in];
 endmodule
 
 module register_file_testbench(); // add case for step_en
 	import CPU_parameters::*;
 	
 	logic clk, reset;
-	logic [3:0] read_register_A, read_register_B, fpga_display_addr; 
+	logic [3:0] read_register_A, read_register_B, fpga_display_addr_in; 
 	logic [3:0] write_addr;
 	logic [DATA_WIDTH-1:0] write_data;
 	logic write_en;
@@ -43,7 +43,7 @@ module register_file_testbench(); // add case for step_en
 	
 	logic [DATA_WIDTH-1:0] read_data_A, read_data_B, fpga_display_data;
 	
-	register_file dut (.clk, .reset, .read_register_A, .read_register_B, .fpga_display_addr, .write_addr, .write_data, .write_en, .step_en, .read_data_A, .read_data_B, .fpga_display_data);
+	register_file dut (.clk, .reset, .read_register_A, .read_register_B, .fpga_display_addr_in, .write_addr, .write_data, .write_en, .step_en, .read_data_A, .read_data_B, .fpga_display_data);
 	
 	// Set up a simulated clock.
 	parameter CLOCK_PERIOD = 100;
