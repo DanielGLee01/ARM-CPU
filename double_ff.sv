@@ -1,3 +1,5 @@
+`default_nettype none
+
 module double_ff (clk, in, out);
 	input logic clk, in;
 	output logic out;
@@ -9,8 +11,6 @@ module double_ff (clk, in, out);
 		out <= passthrough;
 	end
 endmodule
-
-`default_nettype none
 
 module double_ff_testbench();
 	logic clk, in, out;
