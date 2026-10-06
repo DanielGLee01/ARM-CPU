@@ -6,8 +6,8 @@ module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1, HEX2, H
 	output logic [6:0]  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
 	output logic [9:0]  LEDR;
 	
-	logic [DATA_WIDTH-1:0] fpga_display_data;
-	logic [15:0] halfed_bits;
+	logic [DATA_WIDTH-1:0] fpga_display_data, fpga_display_instr;
+	logic [15:0] halfed_bits_data, halfed_bits_instr, halfed_bits;
 	
 	// Turn off HEX displays and LEDS
 	assign HEX4 = 7'b1111111;
@@ -23,9 +23,13 @@ module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1, HEX2, H
 	// Turns KEY0 into a reset button
 	double_ff key0 (.clk(CLOCK_50), .in(~KEY[0]), .out(reset_sync));
 	
+	// Allows for display of either register or instructions
+	mux_2_to_1 #(.WIDTH(16)) display_data_fpga (.a(fpga_display_data[31:16]), .b(fpga_display_data[15:0]), .s(SW[4]), .y(halfed_bits_data));
+	mux_2_to_1 #(.WIDTH(16)) display_instr_fpga (.a(fpga_display_instr[31:16]), .b(fpga_display_instr[15:0]), .s(SW[4]), .y(halfed_bits_instr));
+	mux_2_to_1 #(.WIDTH(16)) instr_or_data (.a(halfed_bits_instr), .b(halfed_bits_data), .s(SW[5]), .y(halfed_bits));
+	
 	// CPU Start
-	mux_2_to_1 #(.WIDTH(16)) upper_lower_bits (.a(fpga_display_data[31:16]), .b(fpga_display_data[15:0]), .s(SW[4]), .y(halfed_bits));
-	cpu_core cpu_start (.clk(CLOCK_50), .reset(reset_sync), .step_en(step_pulse), .fpga_display_addr(SW[3:0]), .fpga_display_data);
+	cpu_core cpu_start (.clk(CLOCK_50), .reset(reset_sync), .step_en(step_pulse), .fpga_display_addr(SW[3:0]), .fpga_display_data, .fpga_display_instr);
 	
 	// Splits halfed bits into 4 groups for 4 different hex lights
 	seg7_decoder hex3_data (.four_bit_num(halfed_bits[15:12]), .segment_display(HEX3));

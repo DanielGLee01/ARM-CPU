@@ -1,6 +1,6 @@
-module instruction_memory import CPU_parameters::*; (addr_in, instr_out);
+module instruction_memory import CPU_parameters::*; (addr_in, instr_out, fpga_display_instr);
 	input logic [8:0] addr_in;
-	output logic [DATA_WIDTH-1:0] instr_out;
+	output logic [DATA_WIDTH-1:0] instr_out, fpga_display_instr;
 	
 	logic [DATA_WIDTH-1:0] memory_array [0:511];
 	
@@ -10,15 +10,16 @@ module instruction_memory import CPU_parameters::*; (addr_in, instr_out);
 	end
 	
 	assign instr_out = memory_array[addr_in];
+	assign fpga_display_instr = memory_array[addr_in];
 endmodule
 
 module instruction_memory_testbench();
 	import CPU_parameters::*;
 	
 	logic [8:0] addr_in;
-	logic [DATA_WIDTH-1:0] instr_out;
+	logic [DATA_WIDTH-1:0] instr_out, fpga_display_instr;
 	
-	instruction_memory dut (.addr_in, .instr_out);
+	instruction_memory dut (.addr_in, .instr_out, .fpga_display_instr);
 	
 	initial begin
 		addr_in = 9'h000; #100;

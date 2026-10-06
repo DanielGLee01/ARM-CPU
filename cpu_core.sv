@@ -1,8 +1,8 @@
-module cpu_core import CPU_parameters::*; (clk, reset, step_en, fpga_display_addr, fpga_display_data);	
+module cpu_core import CPU_parameters::*; (clk, reset, step_en, fpga_display_addr, fpga_display_data, fpga_display_instr);	
 	input logic clk, reset, step_en;
 	
 	input logic [3:0] fpga_display_addr;
-	output logic [DATA_WIDTH-1:0] fpga_display_data;
+	output logic [DATA_WIDTH-1:0] fpga_display_data, fpga_display_instr;
 	
 	logic [PC_WIDTH-1:0] PC_value;
 	logic [DATA_WIDTH-1:0] instruction;
@@ -32,7 +32,7 @@ module cpu_core import CPU_parameters::*; (clk, reset, step_en, fpga_display_add
 
 	// wiring modules for fetch stage
 	program_counter pc (.clk, .reset, .enable(step_en), .PC_value);
-	instruction_memory imem (.addr_in(PC_value[PC_WIDTH-1:2]), .instr_out(instruction));
+	instruction_memory imem (.addr_in(PC_value[PC_WIDTH-1:2]), .instr_out(instruction), .fpga_display_instr);
 	
 	// wiring modules for decode/writeback stage
 	decoder dec (.instr_in(instruction), .condition, .opcode, .Rn, .Rd, .class_identifier, .I_bit, .S_bit, .operand_2);
@@ -47,7 +47,7 @@ module cpu_core import CPU_parameters::*; (clk, reset, step_en, fpga_display_add
 	persistent_flags flags (.clk, .reset, .step_en, .c_flag_in(mux_selected_carry), .z_flag_in(alu_z_flag), .n_flag_in(alu_n_flag), .v_flag_in(alu_v_flag), .wr_en(flags_wr_en), .c_flag_out(c_stored), .z_flag_out(z_stored), .n_flag_out(n_stored), .v_flag_out(v_stored));
 endmodule
 
-module cpu_core_testbench(); // add cases for step_en
+module cpu_core_testbench();
 	import CPU_parameters::*;
 	
 	logic clk, reset, step_en;
@@ -64,17 +64,22 @@ module cpu_core_testbench(); // add cases for step_en
 	end
 	
 	initial begin
-		reset <= 0; 																				     @(posedge clk);
+		reset <= 0; step_en <= 0; 																	  @(posedge clk);
 																										     @(posedge clk);
 		reset <= 1; 																				     @(posedge clk);
 																										     @(posedge clk);
 		reset <= 0; 																				     @(posedge clk);
 																										     @(posedge clk);
+		step_en <= 1;																					  @(posedge clk);
+		step_en <= 0;																					  @(posedge clk);
 																										     @(posedge clk);
 																										     @(posedge clk);
 																										     @(posedge clk);
 																										     @(posedge clk);
 																										     @(posedge clk);
+																										     @(posedge clk);
+		step_en <= 1;																					  @(posedge clk);
+		step_en <= 0;																					  @(posedge clk);
    $stop;
 	end
 endmodule
