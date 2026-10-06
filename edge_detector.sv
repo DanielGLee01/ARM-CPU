@@ -24,16 +24,16 @@ module edge_detector_testbench();
 	end
 	
 	initial begin
-		in <= 0;																							  @(posedge clk); // input is 0, stored is 0, so out is 0
+		in <= 0;																							  @(posedge clk); 
 																											  @(posedge clk);
-		assert (out === 0) else $error("edge detector not working correctly, output is %b", out);
-		in <= 1;																							  @(posedge clk); // button press (in is 1, stored is 0) so out is 1
-		assert (out === 1) else $error("edge detector not working correctly, output is %b", out);
-																											  @(posedge clk); // input is 1, stored is 1, so out is 0
-		assert (out === 0) else $error("edge detector not working correctly, output is %b", out);
+		assert (out === 0) else $error("edge detector not working correctly, output is %b", out);		// input is 0, stored is 0, so out is 0
+		in <= 1;																							  @(posedge clk); 
+		assert (out === 1) else $error("edge detector not working correctly, output is %b", out);		// button press (in is 1, stored is 0) so out is 1
+																											  @(posedge clk); 
+		assert (out === 0) else $error("edge detector not working correctly, output is %b", out);    // input is 1, stored is 1, so out is 0
 		in <= 0;
-																											  @(posedge clk); // input is 0, stored is 1, so out is 0
-		assert (out === 0) else $error("edge detector not working correctly, output is %b", out);
+																											  @(posedge clk); 
+		assert (out === 0) else $error("edge detector not working correctly, output is %b", out);		// input is 0, stored is 1, so out is 0
 		$stop;
 	end
 endmodule
