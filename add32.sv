@@ -58,17 +58,3 @@ module add32 import CPU_parameters::*; (a, b, cin, sum, cout);
 	add1 adder32 (.a(a[31]), .b(b[31]), .cin(carrywire[30]), .sum(sum[31]), .cout);
 	*/
 endmodule
-
-module add32_testbench();
-	import CPU_parameters::*;
-	
-	logic [DATA_WIDTH-1:0] a, b, sum;
-	logic cin, cout;
-	
-	add32 dut (.a, .b, .cin, .sum, .cout);
-	
-	initial begin
-		a = 32'hFFFFFFFF; b = 32'h00000001; cin = 0; #10;
-		a = 32'hAAAAAAAA; b = 32'h55555555; cin = 0; #10;
-	end
-endmodule
