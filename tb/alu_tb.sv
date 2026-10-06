@@ -1,26 +1,26 @@
 `default_nettype none
 
-module alu_testbench();
-	import CPU_parameters::*;
-	
-	logic [DATA_WIDTH-1:0] a, b;
-	logic [3:0] operation;
-	logic [DATA_WIDTH-1:0] result;
-	logic carry_flag, zero_flag, negative_flag, overflow_flag;
-	
-	alu dut (.a, .b, .operation, .result, .carry_flag, .zero_flag, .negative_flag, .overflow_flag);
-	
-	initial begin
-		a = 32'hFFFFFFFF; b = 32'h00000001; operation = 4'b0000; #100; // expected result - 33'h100000000, carry_flag = 1
-		a = 32'hFFFFFFFF; b = 32'h00000001; operation = 4'b0001; #100; // expected result - 33'hFFFFFFFE
-		a = 32'hAAAAAAAA; b = 32'h55555555; operation = 4'b0000; #100; // expected result - 33'hFFFFFFFF
-		a = 32'hAAAAAAAA; b = 32'h55555555; operation = 4'b0001; #100; // expected result - 32'h55555555
-		a = 32'hBBBBBBBB; b = 32'h55555555; operation = 4'b0001; #100; // expected result - 32'h66666666
-		a = 32'h00000000; b = 32'h00000000; operation = 4'b0000; #100; // expected result - 32'h00000000
-		a = 32'h00000000; b = 32'h00000000; operation = 4'b0001; #100; // expected result - 32'h00000000
-		a = 32'h55555555; b = 32'hAAAAAAAA; operation = 4'b0001; #100; 
-		a = 32'hAAAAAAAA; b = 32'h55555555; operation = 4'b0010; #100; // expected result = 32'h00000000
-		a = 32'hAAAAAAAA; b = 32'h55555555; operation = 4'b0011; #100; // expected result - 32'hFFFFFFFF
-		a = 32'hAAAAAAAA; b = 32'hAAAAAAAA; operation = 4'b0100; #100; // expected result - 32'h00000000
-	end
+module alu_tb();
+    import CPU_parameters::*;
+
+    logic [DATA_WIDTH-1:0] a, b;
+    logic [3:0] operation;
+    logic [DATA_WIDTH-1:0] result;
+    logic carry_flag, zero_flag, negative_flag, overflow_flag;
+
+    alu dut (.a, .b, .operation, .result, .carry_flag, .zero_flag, .negative_flag, .overflow_flag);
+
+    initial begin
+        a = 32'hFFFFFFFF; b = 32'h00000001; operation = 4'b0000; #100; // expected result - 33'h100000000, carry_flag = 1
+        a = 32'hFFFFFFFF; b = 32'h00000001; operation = 4'b0001; #100; // expected result - 33'hFFFFFFFE
+        a = 32'hAAAAAAAA; b = 32'h55555555; operation = 4'b0000; #100; // expected result - 33'hFFFFFFFF
+        a = 32'hAAAAAAAA; b = 32'h55555555; operation = 4'b0001; #100; // expected result - 32'h55555555
+        a = 32'hBBBBBBBB; b = 32'h55555555; operation = 4'b0001; #100; // expected result - 32'h66666666
+        a = 32'h00000000; b = 32'h00000000; operation = 4'b0000; #100; // expected result - 32'h00000000
+        a = 32'h00000000; b = 32'h00000000; operation = 4'b0001; #100; // expected result - 32'h00000000
+        a = 32'h55555555; b = 32'hAAAAAAAA; operation = 4'b0001; #100;
+        a = 32'hAAAAAAAA; b = 32'h55555555; operation = 4'b0010; #100; // expected result = 32'h00000000
+        a = 32'hAAAAAAAA; b = 32'h55555555; operation = 4'b0011; #100; // expected result - 32'hFFFFFFFF
+        a = 32'hAAAAAAAA; b = 32'hAAAAAAAA; operation = 4'b0100; #100; // expected result - 32'h00000000
+    end
 endmodule
