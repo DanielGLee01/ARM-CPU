@@ -16,10 +16,11 @@ module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1, HEX2, H
 	
 	logic step_sync, step_pulse, reset_sync;
 	
-	// preventing metastability for button presses
+	// Turns KEY3 into a step button, to advance instructions with one press
 	double_ff key3_sync (.clk(CLOCK_50), .in(~KEY[3]), .out(step_sync));
 	edge_detector key3_detect (.clk(CLOCK_50), .in(step_sync), .out(step_pulse));
 	
+	// Turns KEY0 into a reset button
 	double_ff key0 (.clk(CLOCK_50), .in(~KEY[0]), .out(reset_sync));
 	
 	// CPU Start
