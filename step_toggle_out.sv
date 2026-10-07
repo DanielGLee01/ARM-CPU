@@ -8,10 +8,10 @@ module step_toggle_out (clk, reset, key_input, led_output);
         if (reset) begin
             store_led <= 0;
         end else if (key_input) begin
-            store_led <= led_output;
+            store_led <= led_output ^ key_input;
         end
     end
 
-    assign led_output = store_led ^ key_input;
+    assign led_output = store_led;
 
 endmodule
