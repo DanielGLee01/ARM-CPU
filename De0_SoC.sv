@@ -12,11 +12,11 @@ module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1,
     logic [DATA_WIDTH-1:0] fpga_display_data, fpga_display_instr;
     logic [15:0] halfed_bits_data, halfed_bits_instr, halfed_bits;
 
+    logic step_sync, step_pulse, reset_sync, toggle_led;
+
     // Turn off HEX displays and LEDS
     assign HEX4 = 7'b1111111;
     assign LEDR = {toggle_led, 9'b000000000};
-
-    logic step_sync, step_pulse, reset_sync, toggle_led;
 
     // Adds a counter to HEX5, showing which register is selected (may remove later)
     logic [6:0] reg_num;
