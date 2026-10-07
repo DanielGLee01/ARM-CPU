@@ -14,9 +14,9 @@ module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1,
 
     // Turn off HEX displays and LEDS
     assign HEX4 = 7'b1111111;
-    assign LEDR = 10'b0000000000;
+    assign LEDR = {toggle_led, 9'b000000000};
 
-    logic step_sync, step_pulse, reset_sync;
+    logic step_sync, step_pulse, reset_sync, toggle_led;
 
     // Adds a counter to HEX5, showing which register is selected (may remove later)
     logic [6:0] reg_num;
@@ -33,7 +33,7 @@ module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1,
 
     // Assign LEDR[9] to reflect a toggle between instructions
     step_toggle_out start_toggle_led (.clk(CLOCK_50), .reset(reset_sync), .key_input(step_pulse),
-                                      .led_output(LEDR[9]));
+                                      .led_output(toggle_led));
 
     // Allows for display of either register or instructions
     mux_2_to_1 #(.WIDTH(16)) display_data_fpga (.a(fpga_display_data[31:16]),
