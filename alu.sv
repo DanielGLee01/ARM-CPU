@@ -12,6 +12,11 @@ module alu import CPU_parameters::*; (a, b, operation, result, carry_flag,
     logic add_or_sub_sig;
 
     always_comb begin
+        result = 0;
+        carry_flag = 0;
+        overflow_flag = 0;
+        cin = 0;
+        add_or_sub_sig = 0;
         case(operation)
             4'b0000: begin // addition operation
                 cin = 0;

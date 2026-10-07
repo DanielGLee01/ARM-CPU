@@ -28,6 +28,10 @@ module control_unit import CPU_parameters::*; (I_bit, S_bit, imm_rotated_num, re
 
     // ARM Data Processing Instructions
     always_comb begin
+        ALU_opcode = 4'b1111;
+        reg_wr_en = 0;
+        log_arith = 0; // 0 = logical, 1 = arithmetic
+        implemented = 0;
         case (opcode_in)
             4'b0000: begin // AND
                 ALU_opcode = 4'b0010;
