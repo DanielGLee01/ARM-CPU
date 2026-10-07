@@ -10,7 +10,7 @@ module alu_tb();
 
     alu dut (.a, .b, .operation, .result, .carry_flag, .zero_flag, .negative_flag, .overflow_flag);
 
-    initial begin
+    initial begin // add cases for flags
         a = 32'hFFFFFFFF; b = 32'h00000001; operation = 4'b0000; #100; // expected result - 33'h100000000, carry_flag = 1
         a = 32'hFFFFFFFF; b = 32'h00000001; operation = 4'b0001; #100; // expected result - 33'hFFFFFFFE
         a = 32'hAAAAAAAA; b = 32'h55555555; operation = 4'b0000; #100; // expected result - 33'hFFFFFFFF
@@ -18,9 +18,15 @@ module alu_tb();
         a = 32'hBBBBBBBB; b = 32'h55555555; operation = 4'b0001; #100; // expected result - 32'h66666666
         a = 32'h00000000; b = 32'h00000000; operation = 4'b0000; #100; // expected result - 32'h00000000
         a = 32'h00000000; b = 32'h00000000; operation = 4'b0001; #100; // expected result - 32'h00000000
-        a = 32'h55555555; b = 32'hAAAAAAAA; operation = 4'b0001; #100;
-        a = 32'hAAAAAAAA; b = 32'h55555555; operation = 4'b0010; #100; // expected result = 32'h00000000
-        a = 32'hAAAAAAAA; b = 32'h55555555; operation = 4'b0011; #100; // expected result - 32'hFFFFFFFF
-        a = 32'hAAAAAAAA; b = 32'hAAAAAAAA; operation = 4'b0100; #100; // expected result - 32'h00000000
+        a = 32'h55555555; b = 32'hAAAAAAAA; operation = 4'b0001; #100; // find result - (32'hAAAAAAAB)
+        a = 32'hAAAAAAAA; b = 32'h55555555; operation = 4'b0010; #100;
+        assert (result === 32'h00000000)
+        else $error("expected result is 32'h00000000, got %b instead", result);
+        a = 32'hAAAAAAAA; b = 32'h55555555; operation = 4'b0011; #100;
+        assert (result === 32'hFFFFFFFF)
+        else $error("expected result is 32'hFFFFFFFF, got %b instead", result);
+        a = 32'hAAAAAAAA; b = 32'hAAAAAAAA; operation = 4'b0100; #100;
+        assert (result === 32'h00000000)
+        else $error("expected result is 32'h00000000, got %b instead", result);
     end
 endmodule

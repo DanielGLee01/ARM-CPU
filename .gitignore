@@ -3,6 +3,7 @@ output_files/
 simulation/
 incremental_db/
 devkits/
+.vscode/
 *.bak
 De0_SoC.qws
 De0_SoC_nativelink_simulation.rpt
