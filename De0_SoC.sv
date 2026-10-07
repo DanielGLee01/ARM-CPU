@@ -31,6 +31,10 @@ module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1,
     // Turns KEY0 into a reset button
     double_ff key0 (.clk(CLOCK_50), .in(~KEY[0]), .out(reset_sync));
 
+    // Assign LEDR[9] to reflect a toggle between instructions
+    step_toggle_out start_toggle_led (.clk(CLOCK_50), .reset(reset_sync), .key_input(step_pulse),
+                                      .led_output(LEDR[9]));
+
     // Allows for display of either register or instructions
     mux_2_to_1 #(.WIDTH(16)) display_data_fpga (.a(fpga_display_data[31:16]),
                                                 .b(fpga_display_data[15:0]), .s(SW[4]),
