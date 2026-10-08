@@ -1,3 +1,5 @@
+`default_nettype none
+
 module register_rotator_tb();
     logic [11:0] operand_2;
     logic curr_carry;

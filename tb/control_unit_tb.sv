@@ -1,3 +1,5 @@
+`default_nettype none
+
 module control_unit_tb();
     import CPU_parameters::*;
 

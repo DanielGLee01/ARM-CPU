@@ -1,3 +1,5 @@
+`default_nettype none
+
 module program_counter_tb();
     import CPU_parameters::*;
 

@@ -1,3 +1,5 @@
+`default_nettype none
+
 module mux_2_to_1_tb();
     localparam int WIDTH = 32;
 
