@@ -172,5 +172,5 @@ set_global_assignment -name EDA_TEST_BENCH_FILE tb/seg7_decoder_tb.sv -section_i
 set_global_assignment -name EDA_TEST_BENCH_FILE tb/step_toggle_out_tb.sv -section_id "complete CPU testbench"
 set_global_assignment -name EDA_TEST_BENCH_FILE step_toggle_out.sv -section_id individual_module
 set_global_assignment -name EDA_TEST_BENCH_FILE tb/step_toggle_out_tb.sv -section_id individual_module
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name TOP_LEVEL_ENTITY De0_SoC
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
