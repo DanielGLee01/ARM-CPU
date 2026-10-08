@@ -1,0 +1,22 @@
+`default_nettype none
+
+module instruction_memory_tb();
+    import CPU_parameters::*;
+
+    logic [8:0] addr_in;
+    logic [DATA_WIDTH-1:0] instr_out, fpga_display_instr;
+
+    instruction_memory dut (.addr_in, .instr_out, .fpga_display_instr);
+
+    initial begin
+        addr_in = 9'h000; #100;
+        assert (instr_out === 32'hE290100F)
+        else $error("data mismatch: got %b, expected E290100F", instr_out);
+        addr_in = 9'h003; #100;
+        assert (instr_out === 32'hE29AC31B)
+        else $error("data mismatch: got %b, expected E29AC31B", instr_out);
+        addr_in = 9'h005; #100;
+        assert (instr_out === 32'hE1510001)
+        else $error("data mismatch: got %b, expected E1510001", instr_out);
+    end
+endmodule
