@@ -17,7 +17,7 @@ module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1,
     logic step_sync, step_pulse, reset_sync, toggle_led;
 
     assign HEX4 = 7'b1111111; // Turn HEX4 off
-    /// LED Assignments
+    // LED Assignments
     assign LEDR = {toggle_led, 3'b000, fpga_reg_wr_en, fpga_flags_wr_en,
                    n_led, z_led, c_led, v_led};
 
