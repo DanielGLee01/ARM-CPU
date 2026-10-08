@@ -6,8 +6,11 @@ module cpu_core_tb();
     logic clk, reset, step_en;
     logic [3:0] fpga_display_addr_in;
     logic [DATA_WIDTH-1:0] fpga_display_data;
+    logic fpga_reg_wr_en, fpga_flags_wr_en;
+    logic n_led, z_led, c_led, v_led;
 
-    cpu_core dut (.clk, .reset, .step_en, .fpga_display_addr_in, .fpga_display_data);
+    cpu_core dut (.clk, .reset, .step_en, .fpga_display_addr_in, .fpga_display_data,
+                  .fpga_reg_wr_en, .fpga_flags_wr_en, .n_led, .z_led, .c_led, .v_led);
 
     // Set up a simulated clock.
     parameter real CLOCK_PERIOD=100;

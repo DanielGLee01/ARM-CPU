@@ -11,12 +11,14 @@ module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1,
 
     logic [DATA_WIDTH-1:0] fpga_display_data, fpga_display_instr;
     logic [15:0] halfed_bits_data, halfed_bits_instr, halfed_bits;
+    logic fpga_reg_wr_en, fpga_flags_wr_en;
+    logic n_led, z_led, c_led, v_led;
 
     logic step_sync, step_pulse, reset_sync, toggle_led;
 
-    // Turn off HEX displays and LEDS
-    assign HEX4 = 7'b1111111;
-    assign LEDR = {toggle_led, 9'b000000000};
+    assign HEX4 = 7'b1111111; // Turn HEX4 off
+    assign LEDR = {toggle_led, 3'b000, fpga_reg_wr_en, fpga_flags_wr_en,
+                   n_led, z_led, c_led, v_led};
 
     // Adds a counter to HEX5, showing which register is selected (may remove later)
     logic [6:0] reg_num;
@@ -47,7 +49,8 @@ module De0_SoC import CPU_parameters::*; (CLOCK_50, KEY, SW, HEX0, HEX1,
 
     // CPU Start
     cpu_core cpu_start (.clk(CLOCK_50), .reset(reset_sync), .step_en(step_pulse),
-                        .fpga_display_addr_in(SW[3:0]), .fpga_display_data, .fpga_display_instr);
+                        .fpga_display_addr_in(SW[3:0]), .fpga_display_data, .fpga_display_instr,
+                        .fpga_reg_wr_en, .fpga_flags_wr_en, .n_led, .z_led, .c_led, .v_led);
 
     // Splits halfed bits into 4 groups for 4 different hex lights
     seg7_decoder hex3_data (.four_bit_num(halfed_bits[15:12]), .segment_display(HEX3));

@@ -1,11 +1,16 @@
 `default_nettype none
 
 module cpu_core import CPU_parameters::*; (clk, reset, step_en, fpga_display_addr_in,
-                                           fpga_display_data, fpga_display_instr);
+                                           fpga_display_data, fpga_display_instr,
+                                           fpga_reg_wr_en, fpga_flags_wr_en, n_led, z_led, c_led,
+                                           v_led);
     input logic clk, reset, step_en;
 
     input logic [3:0] fpga_display_addr_in;
     output logic [DATA_WIDTH-1:0] fpga_display_data, fpga_display_instr;
+
+    output logic fpga_reg_wr_en, fpga_flags_wr_en;
+    output logic n_led, z_led, c_led, v_led;
 
     logic [PC_WIDTH-1:0] PC_value;
     logic [DATA_WIDTH-1:0] instruction;
@@ -19,16 +24,23 @@ module cpu_core import CPU_parameters::*; (clk, reset, step_en, fpga_display_add
     logic shifter_carry_out; // First produced from rotator, gets fed into control unit's mux
 
     logic alu_c_flag, alu_z_flag, alu_n_flag, alu_v_flag;
-    logic flags_wr_en;
 
     logic mux_selected_carry, c_stored;
+
+    logic reg_wr_en, flags_wr_en;
 
     logic [3:0] ALU_opcode;
 
     logic [DATA_WIDTH-1:0] rotated_num;
     logic [DATA_WIDTH-1:0] ALU_result;
 
-    logic reg_wr_en;
+    // different output wires for fpga wr_en and flag LEDs
+    assign fpga_reg_wr_en = reg_wr_en;
+    assign fpga_flags_wr_en = flags_wr_en;
+    assign n_led = n_stored;
+    assign z_led = z_stored;
+    assign c_led = c_stored;
+    assign v_led = v_stored;
 
     // This is currently unused, because no modules utilize these flags yet
     logic z_stored, n_stored, v_stored;
