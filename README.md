@@ -1,11 +1,16 @@
 # Overview
 
-This branch of the project aims to implement the CPU on a Terasic De0_SoC board. The user manual for this specific board can be found [here](DE0_CV_User_Manual_112.pdf) 
+This is a CPU created in SystemVerilog, that can load and execute instructions. This README is supposed to be a reference/guide to the entire program. 
 
-## Implementation Features
-This repository aims to create a 32 bit ARM CPU inside of SystemVerilog, to gain a deeper understanding of how a CPU fundamentally works. As of now, functionality of a single-cycle CPU has been completed, with some physical interaction on the I/O of the De0_SoC-CV board (documented in the README in the fpga-bringup branch).
+## Table of Contents:
+- [1. Workflow](#workflow)
+- [2. Component Explanation](#component-explanation)
+- [3. Implementation Features](#implementation-features)
+- [4. Sources](#sources)
 
-## Workflow (currently im adding a bunch of functionality notes that should really be in the explanation, so change that when I can)
+## Workflow
+
+(currently im adding a bunch of functionality notes that should really be in the explanation, so change that when I can)
 
 The FPGA board can currently see the contents of each register (R0 to R15) on the HEX lights. HEX3 to HEX0 each display one hexadecimal value which each corresponds to 4 bits in the register. SW4 determines whether the upper half of the bits or the lower half of the bits are displayed - if SW4 is high, then the upper 16 bits will be displayed as 4 hexadecimal values, and if SW4 is low, then the lower 16 bits will be displayed as 4 hexadecimal values. 
 
@@ -14,7 +19,7 @@ After the 32 bit adder module was created, the addition and subtraction operatio
 
 I then created a global parameter file containing some parameters for my design. These include the value of the width of the data (which is 32 bits), the amount of registers I have (which is 16) and the width of my program counter (which is 11). This is because the instruction memory defined in this program holds 512 words, with each word being a 4 byte instruction, making my instruction memory 2048 bytes. To properly cover all addresses, this requires 11 bits, because $ 2^{11} = 2048 $. There is a caveat however - we increment the program counter by 4 to go to the next instruction, so that would mean that the bottom two bits of the program counter would never be manipulated and would always stay at 0. 
 
-## Explanation of each component:
+## Component Explanation:
 
 ### ALU
 
@@ -50,6 +55,21 @@ The Decoder takes in the instruction data provided from the instruction memory m
     - If this is in register mode, then bits 11 to 4 are all set to 0. Bits 3 to 0 indicate the second source operand register.1010
 ### Register Rotator
 If and only if the data from the second operand is an immediate from the decoder, this module takes in that data and splits it into two different fields - one 4 bit field which is described as the rotate field, indicating how many bits to rotate the number by, and another 8 bit immediate field which has the data itself.  
+
+## Implementation Features
+This CPU is currently being implemented onto a DE0-SoC board. The  manual for the board can be found [here](DE0_CV_User_Manual_112.pdf).
+
+When the CPU is instantiated on the board, the board will not immediately proceed through all instructions. KEY[3] is a button that controls when the current instruction will execute and the next instruction is loaded. 
+
+All information will be displayed on HEX lights 3 to 0. Depending on whether SW[5] is asserted or not, the hex lights on the board will display different data. If SW[5] is asserted, the hex lights will display part of the instruction hexadecimal values, and if SW[5] is not asserted, the hex lights will display part of the data that is currently on the register. If the board is displaying data, HEX light 5 (the leftmost hex light) will display a number, showing which register's data is currently being viewed. You are able to select which register to view through SW[3] to SW[0], in a binary format. 
+
+SW[4] controls which bits you are currently viewing. If SW[4] is asserted, you are able to view the upper 16 bits (4 hexadecimal values on the board) of either the instruction or register data, and if SW[4] is not asserted, you are able to view the lower 16 bits (4 hexadecimal values on the board) of either the instruction or register data.
+
+KEY[0] resets the CPU and goes back to the first instruction that is loaded into the CPU.
+
+Some LED lights on the board give information regarding the program. LED[9] is a toggle LED, which toggles between on and off depending on if an instruction has been executed. If the LED is off, and an instruction is executed by pressing KEY[3], this LED will turn on and stay on until KEY[3] is pressed/the next instruction is executed.
+
+LEDs 5 and 4 are the LEDs that show the register_write_enable and flags_write_enable signals, respectively. LEDs 3 to 0 show the negative, zero, carry and overflow flags respectively.
 
 
 ###### Sources:
