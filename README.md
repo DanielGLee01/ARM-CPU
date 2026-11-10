@@ -23,6 +23,8 @@ I then created a global parameter file containing some parameters for my design.
 
 ### ALU
 
+The Arithmetic Logic Unit (also known as the ALU) is the module that controls which operation is performed, and subsequently performs that operation according to the opcode that it receives. The opcode is taken from the instruction bit 
+
 ### Register File
 The register file is a module that can read and write data to two different addresses. The register file in this module has 16 registers, each being 32 bits wide. The module has 5 inputs:
 - write_en is a 1 bit input that tells the register file whether to write to a specific register or not. If this input is low, no data will be written to any of the registers, preserving data.
@@ -53,6 +55,7 @@ The Decoder takes in the instruction data provided from the instruction memory m
 - Bits 11:0 specifies the second source operand register. Depending on whether this in immediate or register mode, the data in the bits change.
     - If this is in immediate mode, then the first 4 bits of the field are the rotate field, indicating how many bits to rotate the immediate value by, and the last 8 bits is interpreted as the immediate value itself (so the raw data). This operation is completed by the [Register Rotator](#register-rotator).
     - If this is in register mode, then bits 11 to 4 are all set to 0. Bits 3 to 0 indicate the second source operand register.1010
+
 ### Register Rotator
 If and only if the data from the second operand is an immediate from the decoder, this module takes in that data and splits it into two different fields - one 4 bit field which is described as the rotate field, indicating how many bits to rotate the number by, and another 8 bit immediate field which has the data itself.  
 
